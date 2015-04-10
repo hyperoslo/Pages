@@ -4,6 +4,8 @@ let PagesPageControlHeight: CGFloat = 37.0
 
 @objc(HYP) public class Pages: UIPageViewController, UIPageViewControllerDelegate, UIPageViewControllerDataSource {
 
+  public var startPage = 0
+
   public var enableSwipe = true {
     didSet {
       self.toggle()
@@ -21,6 +23,7 @@ let PagesPageControlHeight: CGFloat = 37.0
 
     self.delegate = self
     self.dataSource = self
+    self.goToPage(self.startPage)
   }
 
   // MARK: Public methods
@@ -45,7 +48,7 @@ let PagesPageControlHeight: CGFloat = 37.0
   }
 
   public func addPage(viewController: UIViewController) {
-    self.pages.insert(viewController, atIndex: 0)
+    self.pages.append(viewController)
 
     if self.pages.count == 1 {
       self.setViewControllers([viewController], direction: .Forward, animated: true, completion: nil)
