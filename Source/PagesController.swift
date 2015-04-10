@@ -3,6 +3,7 @@ import UIKit
 @objc(HYP) public class PagesController: UIPageViewController, UIPageViewControllerDelegate, UIPageViewControllerDataSource {
 
   public var startPage = 0
+  public var setNavigationTitle = true
 
   public var enableSwipe = true {
     didSet {
@@ -33,7 +34,9 @@ import UIKit
         direction: (index > self.currentIndex) ? .Forward : .Reverse,
         animated: true, completion: nil)
       self.currentIndex = index
-      self.title = viewController.title
+      if self.setNavigationTitle {
+        self.title = viewController.title
+      }
     }
   }
 
@@ -53,7 +56,9 @@ import UIKit
         direction: .Forward,
         animated: true,
         completion: nil)
-      self.title = viewController.title
+      if self.setNavigationTitle {
+        self.title = viewController.title
+      }
     }
   }
 
@@ -100,7 +105,11 @@ import UIKit
   public func pageViewController(pageViewController: UIPageViewController, willTransitionToViewControllers pendingViewControllers: [AnyObject]) {
     let viewController = pendingViewControllers.first! as! UIViewController
     let index = self.viewControllerIndex(viewController)
-    self.title = viewController.title
+
+    if self.setNavigationTitle {
+      self.title = viewController.title
+    }
+
     self.currentIndex = index
   }
 
