@@ -59,6 +59,12 @@ let PagesPageControlHeight: CGFloat = 37.0
     }
   }
 
+  public func addPages(viewControllers: [UIViewController]) {
+    for viewController: UIViewController in viewControllers {
+      self.addPage(viewController)
+    }
+  }
+
   // MARK: UIPageViewControllerDataSource
 
   public func pageViewController(pageViewController: UIPageViewController, viewControllerBeforeViewController viewController: UIViewController) -> UIViewController? {
