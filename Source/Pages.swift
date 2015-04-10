@@ -55,6 +55,7 @@ let PagesPageControlHeight: CGFloat = 37.0
         direction: .Forward,
         animated: true,
         completion: nil)
+      self.title = viewController.title
     }
   }
 
