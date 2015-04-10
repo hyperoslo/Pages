@@ -4,7 +4,7 @@ let PagesPageControlHeight: CGFloat = 37.0
 
 @objc(HYP) public class Pages : UIPageViewController, UIPageViewControllerDelegate, UIPageViewControllerDataSource {
 
-  public var enabled = true {
+  public var enableSwipe = true {
     didSet {
       self.toggle()
     }
@@ -26,7 +26,7 @@ let PagesPageControlHeight: CGFloat = 37.0
   // MARK: Public methods
 
   public func goToPage(index: Int) {
-    if self.enabled && index > -1 && index < self.pages.count {
+    if index > -1 && index < self.pages.count {
       let viewController = self.pages[index]
       self.setViewControllers([viewController],
         direction: (index > self.currentIndex) ? .Forward : .Reverse,
@@ -107,7 +107,7 @@ let PagesPageControlHeight: CGFloat = 37.0
 
   private func toggle() {
     for recognizer in self.gestureRecognizers {
-      (recognizer as! UIGestureRecognizer).enabled = self.enabled
+      (recognizer as! UIGestureRecognizer).enabled = self.enableSwipe
     }
   }
 

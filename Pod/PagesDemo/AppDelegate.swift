@@ -27,6 +27,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
       let pages = Pages()
       pages.addPage(viewController1)
       pages.addPage(viewController2)
+      pages.enableSwipe = false
 
       let navigationController = UINavigationController(rootViewController: pages)
 
