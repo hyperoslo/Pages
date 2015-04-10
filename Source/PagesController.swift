@@ -1,8 +1,6 @@
 import UIKit
 
-let PagesPageControlHeight: CGFloat = 37.0
-
-@objc(HYP) public class Pages: UIPageViewController, UIPageViewControllerDelegate, UIPageViewControllerDataSource {
+@objc(HYP) public class PagesController: UIPageViewController, UIPageViewControllerDelegate, UIPageViewControllerDataSource {
 
   public var startPage = 0
 
