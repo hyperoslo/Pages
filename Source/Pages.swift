@@ -26,6 +26,7 @@ let PagesPageControlHeight: CGFloat = 37.0
         direction: (index > self.currentIndex) ? .Forward : .Reverse,
         animated: true, completion: nil)
       self.currentIndex = index
+      self.title = viewController.title
     }
   }
 
