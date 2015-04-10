@@ -1,11 +1,3 @@
-//
-//  AppDelegate.swift
-//  PagesDemo
-//
-//  Created by Christoffer Winterkvist on 4/10/15.
-//  Copyright (c) 2015 Hyper. All rights reserved.
-//
-
 import UIKit
 
 @UIApplicationMain
@@ -23,7 +15,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
       viewController2.view.backgroundColor = UIColor.whiteColor()
       viewController2.title = "Controller B"
 
-      let pages = Pages()
+      let pages = Pages(transitionStyle: .Scroll, navigationOrientation: .Horizontal, options: nil)
       pages.addPage(viewController1)
       pages.addPage(viewController2)
       pages.enableSwipe = false
