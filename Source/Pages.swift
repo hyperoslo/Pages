@@ -51,8 +51,10 @@ let PagesPageControlHeight: CGFloat = 37.0
     self.pages.append(viewController)
 
     if self.pages.count == 1 {
-      self.setViewControllers([viewController], direction: .Forward, animated: true, completion: nil)
-      self.title = viewController.title
+      self.setViewControllers([viewController],
+        direction: .Forward,
+        animated: true,
+        completion: nil)
     }
   }
 
@@ -90,10 +92,11 @@ let PagesPageControlHeight: CGFloat = 37.0
 
   // MARK: UIPageViewControllerDelegate
 
-  public func pageViewController(pageViewController: UIPageViewController, didFinishAnimating finished: Bool, previousViewControllers: [AnyObject], transitionCompleted completed: Bool) {
-    let viewControllers: NSArray = self.pages
-
-    self.currentIndex = 1
+  public func pageViewController(pageViewController: UIPageViewController, willTransitionToViewControllers pendingViewControllers: [AnyObject]) {
+    let viewController = pendingViewControllers.first! as! UIViewController
+    let index = self.viewControllerIndex(viewController)
+    self.title = viewController.title
+    self.currentIndex = index
   }
 
   // MARK: Private methods
