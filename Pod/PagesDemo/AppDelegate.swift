@@ -15,7 +15,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
       viewController2.view.backgroundColor = UIColor.whiteColor()
       viewController2.title = "Controller B"
 
-      let pages = Pages(transitionStyle: .Scroll, navigationOrientation: .Horizontal, options: nil)
+      let pages = PagesController(transitionStyle: .Scroll, navigationOrientation: .Horizontal, options: nil)
       pages.addPage(viewController1)
       pages.addPage(viewController2)
       pages.enableSwipe = false
