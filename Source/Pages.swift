@@ -45,7 +45,7 @@ let PagesPageControlHeight: CGFloat = 37.0
   }
 
   public func addPage(viewController: UIViewController) {
-    self.pages.append(viewController)
+    self.pages.insert(viewController, atIndex: 0)
 
     if self.pages.count == 1 {
       self.setViewControllers([viewController], direction: .Forward, animated: true, completion: nil)
