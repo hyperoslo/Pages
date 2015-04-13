@@ -18,7 +18,9 @@ import UIKit
   var currentIndex: Int = 0
 
   convenience init(_ pages: [UIViewController]) {
-    self.init()
+    self.init(transitionStyle: .Scroll,
+      navigationOrientation: .Horizontal,
+      options: nil)
     self.pages = pages
   }
 
