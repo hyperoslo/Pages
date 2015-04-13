@@ -17,6 +17,11 @@ import UIKit
 
   var currentIndex: Int = 0
 
+  convenience init(_ pages: [UIViewController]) {
+    self.init()
+    self.pages = pages
+  }
+
   public override func viewDidLoad() {
     super.viewDidLoad()
 
