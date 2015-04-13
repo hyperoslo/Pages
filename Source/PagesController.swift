@@ -85,17 +85,13 @@ extension PagesController {
 extension PagesController {
 
   public func pageViewController(pageViewController: UIPageViewController, viewControllerBeforeViewController viewController: UIViewController) -> UIViewController? {
-    if let index = prev(viewControllerIndex(viewController)) where index > 0 {
-      return self.pages[index]
-    }
-    return nil
+      let index = prev(viewControllerIndex(viewController))
+      return self.pages.at(index)
   }
 
   public func pageViewController(pageViewController: UIPageViewController, viewControllerAfterViewController viewController: UIViewController) -> UIViewController? {
-    if let index = next(viewControllerIndex(viewController)) where index < self.pages.count {
-      return self.pages[index]
-    }
-    return nil
+      let index = next(viewControllerIndex(viewController))
+      return self.pages.at(index)
   }
 
   public func presentationCountForPageViewController(pageViewController: UIPageViewController) -> Int {
@@ -124,6 +120,17 @@ extension PagesController {
 }
 
 // MARK: Private methods
+
+extension Array {
+  func at(index: Int?) -> T? {
+     if let index = index where index >= 0 && index < self.endIndex {
+      return self[index]
+    } else {
+      return nil
+    }
+  }
+}
+
 
 extension PagesController {
 
