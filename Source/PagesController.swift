@@ -71,12 +71,12 @@ extension PagesController {
 extension PagesController {
 
   public func pageViewController(pageViewController: UIPageViewController, viewControllerBeforeViewController viewController: UIViewController) -> UIViewController? {
-      let index = prev(viewControllerIndex(viewController))
+      let index = prevIndex(viewControllerIndex(viewController))
       return self.pages.at(index)
   }
 
   public func pageViewController(pageViewController: UIPageViewController, viewControllerAfterViewController viewController: UIViewController) -> UIViewController? {
-      let index = next(viewControllerIndex(viewController))
+      let index: Int? = nextIndex(viewControllerIndex(viewController))
       return self.pages.at(index)
   }
 
@@ -144,11 +144,11 @@ extension Array {
   }
 }
 
-func next(x: Int?) -> Int? {
+func nextIndex(x: Int?) -> Int? {
   return x.map { $0 + 1}
 }
 
-func prev(x: Int?) -> Int? {
+func prevIndex(x: Int?) -> Int? {
   return x.map { $0 - 1}
 }
 
