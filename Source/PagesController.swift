@@ -25,14 +25,14 @@ import UIKit
         navigationOrientation: navigationOrientation,
         options: options)
 
-      self.pages = pages
+      self.add(pages)
   }
 
   public convenience init(_ pages: [UIViewController]) {
     self.init(transitionStyle: .Scroll,
       navigationOrientation: .Horizontal,
       options: nil)
-    self.pages = pages
+    self.add(pages)
   }
 
   public override func viewDidLoad() {
