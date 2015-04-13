@@ -28,7 +28,6 @@ import UIKit
       self.pages = pages
   }
 
-
   public convenience init(_ pages: [UIViewController]) {
     self.init(transitionStyle: .Scroll,
       navigationOrientation: .Horizontal,
