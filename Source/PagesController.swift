@@ -1,6 +1,6 @@
 import UIKit
 
-@objc(HYP) public class PagesController: UIPageViewController, UIPageViewControllerDelegate, UIPageViewControllerDataSource {
+@objc(HYPPagesController) public class PagesController: UIPageViewController, UIPageViewControllerDelegate, UIPageViewControllerDataSource {
 
   public var startPage = 0
   public var setNavigationTitle = true
