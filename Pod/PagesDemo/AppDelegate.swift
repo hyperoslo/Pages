@@ -20,9 +20,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
       let navigationController = UINavigationController(rootViewController: pages)
 
-      pages.navigationItem.leftBarButtonItem = UIBarButtonItem(title: "Previous Page", style: .Plain, target: pages, action: "previousPage")
+      pages.navigationItem.leftBarButtonItem = UIBarButtonItem(title: "Previous Page", style: .Plain, target: pages, action: "previous")
 
-      pages.navigationItem.rightBarButtonItem = UIBarButtonItem(title: "Next Page", style: .Plain, target: pages, action: "nextPage")
+      pages.navigationItem.rightBarButtonItem = UIBarButtonItem(title: "Next Page", style: .Plain, target: pages, action: "next")
 
       self.window = UIWindow(frame: UIScreen.mainScreen().bounds)
       self.window?.rootViewController = navigationController
