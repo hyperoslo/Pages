@@ -40,12 +40,12 @@ import UIKit
 
     self.delegate = self
     self.dataSource = self
-    self.goToPage(self.startPage)
+    self.goto(self.startPage)
   }
 
   // MARK: Public methods
 
-  public func goToPage(index: Int) {
+  public func goto(index: Int) {
     if index > -1 && index < self.pages.count {
       let viewController = self.pages[index]
       self.setViewControllers([viewController],
@@ -58,31 +58,17 @@ import UIKit
     }
   }
 
-  public func nextPage() {
-    self.goToPage(self.currentIndex + 1)
+  public func next() {
+    self.goto(self.currentIndex + 1)
   }
 
-  public func previousPage() {
-    self.goToPage(self.currentIndex - 1)
+  public func previous() {
+    self.goto(self.currentIndex - 1)
   }
 
-  public func addPage(viewController: UIViewController) {
-    self.pages.append(viewController)
-
-    if self.pages.count == 1 {
-      self.setViewControllers([viewController],
-        direction: .Forward,
-        animated: true,
-        completion: nil)
-      if self.setNavigationTitle {
-        self.title = viewController.title
-      }
-    }
-  }
-
-  public func addPages(viewControllers: [UIViewController]) {
+  public func add(viewControllers: [UIViewController]) {
     for viewController: UIViewController in viewControllers {
-      self.addPage(viewController)
+      self.addViewController(viewController)
     }
   }
 
@@ -146,6 +132,20 @@ import UIKit
   private func toggle() {
     for recognizer in self.gestureRecognizers {
       (recognizer as! UIGestureRecognizer).enabled = self.enableSwipe
+    }
+  }
+
+  private func addViewController(viewController: UIViewController) {
+    self.pages.append(viewController)
+
+    if self.pages.count == 1 {
+      self.setViewControllers([viewController],
+        direction: .Forward,
+        animated: true,
+        completion: nil)
+      if self.setNavigationTitle {
+        self.title = viewController.title
+      }
     }
   }
 
