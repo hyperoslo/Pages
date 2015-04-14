@@ -41,10 +41,10 @@ extension PagesController {
   public func goto(index: Int) {
     if index > -1 && index < self.pages.count {
       let viewController = self.pages[index]
+      self.currentIndex = index
       self.setViewControllers([viewController],
         direction: (index > self.currentIndex) ? .Forward : .Reverse,
         animated: true, completion: nil)
-      self.currentIndex = index
       if self.setNavigationTitle {
         self.title = viewController.title
       }
@@ -85,7 +85,7 @@ extension PagesController {
   }
 
   public func presentationIndexForPageViewController(pageViewController: UIPageViewController) -> Int {
-    return 0
+    return self.currentIndex
   }
 
 }
