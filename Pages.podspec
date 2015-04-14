@@ -1,6 +1,6 @@
 Pod::Spec.new do |s|
   s.name             = "Pages"
-  s.summary          = "Pages is the easiest way of setting up a UIPageViewController."
+  s.summary          = "UIPageViewController made simple"
   s.version          = "0.4.0"
   s.homepage         = "https://github.com/hyperoslo/Pages"
   s.license          = 'MIT'
