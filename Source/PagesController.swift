@@ -71,13 +71,13 @@ extension PagesController {
 extension PagesController {
 
   public func pageViewController(pageViewController: UIPageViewController, viewControllerBeforeViewController viewController: UIViewController) -> UIViewController? {
-      let index = prevIndex(viewControllerIndex(viewController))
-      return self.pages.at(index)
+    let index = prevIndex(viewControllerIndex(viewController))
+    return self.pages.at(index)
   }
 
   public func pageViewController(pageViewController: UIPageViewController, viewControllerAfterViewController viewController: UIViewController) -> UIViewController? {
-      let index: Int? = nextIndex(viewControllerIndex(viewController))
-      return self.pages.at(index)
+    let index: Int? = nextIndex(viewControllerIndex(viewController))
+    return self.pages.at(index)
   }
 
   public func presentationCountForPageViewController(pageViewController: UIPageViewController) -> Int {
