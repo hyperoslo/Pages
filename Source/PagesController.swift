@@ -87,6 +87,7 @@ extension PagesController {
   public func presentationIndexForPageViewController(pageViewController: UIPageViewController) -> Int {
     return 0
   }
+
 }
 
 // MARK: UIPageViewControllerDelegate
@@ -104,6 +105,7 @@ extension PagesController {
         }
     }
   }
+
 }
 
 // MARK: Private methods
