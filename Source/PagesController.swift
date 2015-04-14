@@ -94,14 +94,15 @@ extension PagesController {
 extension PagesController {
 
   public func pageViewController(pageViewController: UIPageViewController, willTransitionToViewControllers pendingViewControllers: [AnyObject]) {
-    let viewController = pendingViewControllers.first as! UIViewController
-    let index = self.viewControllerIndex(viewController)
 
-    if self.setNavigationTitle {
-      self.title = viewController.title
+    if let viewController = pendingViewControllers.first as? UIViewController,
+      index = self.viewControllerIndex(viewController) {
+        self.currentIndex = index
+
+        if self.setNavigationTitle {
+          self.title = viewController.title
+        }
     }
-
-    self.currentIndex = index!
   }
 }
 
