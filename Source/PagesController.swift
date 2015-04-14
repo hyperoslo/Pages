@@ -136,6 +136,7 @@ extension PagesController {
 }
 
 extension Array {
+
   func at(index: Int?) -> T? {
     if let index = index where index >= 0 && index < self.endIndex {
       return self[index]
@@ -143,6 +144,7 @@ extension Array {
       return nil
     }
   }
+
 }
 
 func nextIndex(x: Int?) -> Int? {
