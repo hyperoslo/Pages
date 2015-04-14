@@ -11,28 +11,19 @@ import UIKit
     }
   }
 
-  lazy var pages: Array<UIViewController> = {
-    return []
-    }()
+  lazy var pages = Array<UIViewController>()
 
   var currentIndex: Int = 0
 
   public convenience init(_ pages: [UIViewController],
-    transitionStyle: UIPageViewControllerTransitionStyle,
-    navigationOrientation: UIPageViewControllerNavigationOrientation,
-    options: [NSObject : AnyObject]?) {
+    transitionStyle: UIPageViewControllerTransitionStyle = .Scroll,
+    navigationOrientation: UIPageViewControllerNavigationOrientation = .Horizontal,
+    options: [NSObject : AnyObject]? = nil) {
       self.init(transitionStyle: transitionStyle,
         navigationOrientation: navigationOrientation,
         options: options)
 
       self.add(pages)
-  }
-
-  public convenience init(_ pages: [UIViewController]) {
-    self.init(transitionStyle: .Scroll,
-      navigationOrientation: .Horizontal,
-      options: nil)
-    self.add(pages)
   }
 
   public override func viewDidLoad() {
@@ -42,8 +33,10 @@ import UIKit
     self.dataSource = self
     self.goto(self.startPage)
   }
+}
 
-  // MARK: Public methods
+// MARK: Public methods
+extension PagesController {
 
   public func goto(index: Int) {
     if index > -1 && index < self.pages.count {
@@ -67,33 +60,24 @@ import UIKit
   }
 
   public func add(viewControllers: [UIViewController]) {
-    for viewController: UIViewController in viewControllers {
+    for viewController in viewControllers {
       self.addViewController(viewController)
     }
   }
+}
 
-  // MARK: UIPageViewControllerDataSource
+// MARK: UIPageViewControllerDataSource
+
+extension PagesController {
 
   public func pageViewController(pageViewController: UIPageViewController, viewControllerBeforeViewController viewController: UIViewController) -> UIViewController? {
-    var index = viewControllerIndex(viewController)
-    if index == 0 {
-      return nil
-    } else {
-      index--
-      return self.viewControllerAtIndex(index)
-    }
+      let index = prevIndex(viewControllerIndex(viewController))
+      return self.pages.at(index)
   }
 
   public func pageViewController(pageViewController: UIPageViewController, viewControllerAfterViewController viewController: UIViewController) -> UIViewController? {
-    var index = viewControllerIndex(viewController)
-
-    index++
-
-    if index == self.pages.count {
-      return nil
-    } else {
-      return self.viewControllerAtIndex(index)
-    }
+      let index: Int? = nextIndex(viewControllerIndex(viewController))
+      return self.pages.at(index)
   }
 
   public func presentationCountForPageViewController(pageViewController: UIPageViewController) -> Int {
@@ -103,30 +87,30 @@ import UIKit
   public func presentationIndexForPageViewController(pageViewController: UIPageViewController) -> Int {
     return 0
   }
+}
 
-  // MARK: UIPageViewControllerDelegate
+// MARK: UIPageViewControllerDelegate
+
+extension PagesController {
 
   public func pageViewController(pageViewController: UIPageViewController, willTransitionToViewControllers pendingViewControllers: [AnyObject]) {
-    let viewController = pendingViewControllers.first! as! UIViewController
+    let viewController = pendingViewControllers.first as! UIViewController
     let index = self.viewControllerIndex(viewController)
 
     if self.setNavigationTitle {
       self.title = viewController.title
     }
 
-    self.currentIndex = index
+    self.currentIndex = index!
   }
+}
 
-  // MARK: Private methods
+// MARK: Private methods
 
-  func viewControllerIndex(viewController: UIViewController) -> Int {
-    let viewControllers: NSArray = self.pages
+extension PagesController {
 
-    return viewControllers.indexOfObject(viewController)
-  }
-
-  func viewControllerAtIndex(index: NSInteger) -> UIViewController {
-    return self.pages[index]
+  func viewControllerIndex(viewController: UIViewController) -> Int? {
+    return find(self.pages, viewController)
   }
 
   private func toggle() {
@@ -148,5 +132,23 @@ import UIKit
       }
     }
   }
-
 }
+
+extension Array {
+  func at(index: Int?) -> T? {
+    if let index = index where index >= 0 && index < self.endIndex {
+      return self[index]
+    } else {
+      return nil
+    }
+  }
+}
+
+func nextIndex(x: Int?) -> Int? {
+  return x.map { $0 + 1}
+}
+
+func prevIndex(x: Int?) -> Int? {
+  return x.map { $0 - 1}
+}
+
