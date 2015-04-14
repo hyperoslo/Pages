@@ -71,13 +71,13 @@ extension PagesController {
 extension PagesController {
 
   public func pageViewController(pageViewController: UIPageViewController, viewControllerBeforeViewController viewController: UIViewController) -> UIViewController? {
-      let index = prevIndex(viewControllerIndex(viewController))
-      return self.pages.at(index)
+    let index = prevIndex(viewControllerIndex(viewController))
+    return self.pages.at(index)
   }
 
   public func pageViewController(pageViewController: UIPageViewController, viewControllerAfterViewController viewController: UIViewController) -> UIViewController? {
-      let index: Int? = nextIndex(viewControllerIndex(viewController))
-      return self.pages.at(index)
+    let index: Int? = nextIndex(viewControllerIndex(viewController))
+    return self.pages.at(index)
   }
 
   public func presentationCountForPageViewController(pageViewController: UIPageViewController) -> Int {
@@ -87,6 +87,7 @@ extension PagesController {
   public func presentationIndexForPageViewController(pageViewController: UIPageViewController) -> Int {
     return 0
   }
+
 }
 
 // MARK: UIPageViewControllerDelegate
@@ -94,15 +95,17 @@ extension PagesController {
 extension PagesController {
 
   public func pageViewController(pageViewController: UIPageViewController, willTransitionToViewControllers pendingViewControllers: [AnyObject]) {
-    let viewController = pendingViewControllers.first as! UIViewController
-    let index = self.viewControllerIndex(viewController)
 
-    if self.setNavigationTitle {
-      self.title = viewController.title
+    if let viewController = pendingViewControllers.first as? UIViewController,
+      index = self.viewControllerIndex(viewController) {
+        self.currentIndex = index
+
+        if self.setNavigationTitle {
+          self.title = viewController.title
+        }
     }
-
-    self.currentIndex = index!
   }
+
 }
 
 // MARK: Private methods
@@ -135,6 +138,7 @@ extension PagesController {
 }
 
 extension Array {
+
   func at(index: Int?) -> T? {
     if let index = index where index >= 0 && index < self.endIndex {
       return self[index]
@@ -142,13 +146,14 @@ extension Array {
       return nil
     }
   }
+
 }
 
 func nextIndex(x: Int?) -> Int? {
-  return x.map { $0 + 1}
+  return x.map { $0 + 1 }
 }
 
 func prevIndex(x: Int?) -> Int? {
-  return x.map { $0 - 1}
+  return x.map { $0 - 1 }
 }
 
