@@ -31,19 +31,20 @@ import UIKit
 
     delegate = self
     dataSource = self
-    goto(startPage)
+    goTo(startPage)
   }
 }
 
 // MARK: Public methods
 extension PagesController {
 
-  public func goto(index: Int) {
-    if index > -1 && index < pages.count {
+  public func goTo(index: Int) {
+    if index >= 0 && index < pages.count {
+      let direction: UIPageViewControllerNavigationDirection = (index > currentIndex) ? .Forward : .Reverse
       let viewController = pages[index]
       currentIndex = index
       setViewControllers([viewController],
-        direction: (index > currentIndex) ? .Forward : .Reverse,
+        direction: direction,
         animated: true, completion: nil)
       if setNavigationTitle {
         title = viewController.title
@@ -52,11 +53,11 @@ extension PagesController {
   }
 
   public func next() {
-    goto(currentIndex + 1)
+    goTo(currentIndex + 1)
   }
 
   public func previous() {
-    goto(currentIndex - 1)
+    goTo(currentIndex - 1)
   }
 
   public func add(viewControllers: [UIViewController]) {
