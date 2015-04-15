@@ -40,10 +40,11 @@ extension PagesController {
 
   public func goto(index: Int) {
     if index > -1 && index < pages.count {
+      let direction: UIPageViewControllerNavigationDirection = (index > currentIndex) ? .Forward : .Reverse
       let viewController = pages[index]
       currentIndex = index
       setViewControllers([viewController],
-        direction: (index > currentIndex) ? .Forward : .Reverse,
+        direction: direction,
         animated: true, completion: nil)
       if setNavigationTitle {
         title = viewController.title
