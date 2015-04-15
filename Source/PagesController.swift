@@ -38,8 +38,8 @@ import UIKit
 // MARK: Public methods
 extension PagesController {
 
-    if index > -1 && index < pages.count {
   public func goTo(index: Int) {
+    if index >= 0 && index < pages.count {
       let direction: UIPageViewControllerNavigationDirection = (index > currentIndex) ? .Forward : .Reverse
       let viewController = pages[index]
       currentIndex = index
