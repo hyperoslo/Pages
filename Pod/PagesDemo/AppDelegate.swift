@@ -43,9 +43,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         target: pages,
         action: "next")
 
-      self.window = UIWindow(frame: UIScreen.mainScreen().bounds)
-      self.window?.rootViewController = navigationController
-      self.window?.makeKeyAndVisible()
+      window = UIWindow(frame: UIScreen.mainScreen().bounds)
+      window?.rootViewController = navigationController
+      window?.makeKeyAndVisible()
 
       return true
     }
