@@ -7,7 +7,7 @@ import UIKit
 
   public var enableSwipe = true {
     didSet {
-      self.toggle()
+      toggle()
     }
   }
 
@@ -23,15 +23,15 @@ import UIKit
         navigationOrientation: navigationOrientation,
         options: options)
 
-      self.add(pages)
+      add(pages)
   }
 
   public override func viewDidLoad() {
     super.viewDidLoad()
 
-    self.delegate = self
-    self.dataSource = self
-    self.goto(self.startPage)
+    delegate = self
+    dataSource = self
+    goto(startPage)
   }
 }
 
@@ -39,29 +39,29 @@ import UIKit
 extension PagesController {
 
   public func goto(index: Int) {
-    if index > -1 && index < self.pages.count {
-      let viewController = self.pages[index]
-      self.currentIndex = index
-      self.setViewControllers([viewController],
-        direction: (index > self.currentIndex) ? .Forward : .Reverse,
+    if index > -1 && index < pages.count {
+      let viewController = pages[index]
+      currentIndex = index
+      setViewControllers([viewController],
+        direction: (index > currentIndex) ? .Forward : .Reverse,
         animated: true, completion: nil)
-      if self.setNavigationTitle {
-        self.title = viewController.title
+      if setNavigationTitle {
+        title = viewController.title
       }
     }
   }
 
   public func next() {
-    self.goto(self.currentIndex + 1)
+    goto(currentIndex + 1)
   }
 
   public func previous() {
-    self.goto(self.currentIndex - 1)
+    goto(currentIndex - 1)
   }
 
   public func add(viewControllers: [UIViewController]) {
     for viewController in viewControllers {
-      self.addViewController(viewController)
+      addViewController(viewController)
     }
   }
 }
@@ -72,20 +72,20 @@ extension PagesController {
 
   public func pageViewController(pageViewController: UIPageViewController, viewControllerBeforeViewController viewController: UIViewController) -> UIViewController? {
     let index = prevIndex(viewControllerIndex(viewController))
-    return self.pages.at(index)
+    return pages.at(index)
   }
 
   public func pageViewController(pageViewController: UIPageViewController, viewControllerAfterViewController viewController: UIViewController) -> UIViewController? {
     let index: Int? = nextIndex(viewControllerIndex(viewController))
-    return self.pages.at(index)
+    return pages.at(index)
   }
 
   public func presentationCountForPageViewController(pageViewController: UIPageViewController) -> Int {
-    return self.pages.count
+    return pages.count
   }
 
   public func presentationIndexForPageViewController(pageViewController: UIPageViewController) -> Int {
-    return self.currentIndex
+    return currentIndex
   }
 
 }
@@ -97,11 +97,11 @@ extension PagesController {
   public func pageViewController(pageViewController: UIPageViewController, willTransitionToViewControllers pendingViewControllers: [AnyObject]) {
 
     if let viewController = pendingViewControllers.first as? UIViewController,
-      index = self.viewControllerIndex(viewController) {
-        self.currentIndex = index
+      index = viewControllerIndex(viewController) {
+        currentIndex = index
 
-        if self.setNavigationTitle {
-          self.title = viewController.title
+        if setNavigationTitle {
+          title = viewController.title
         }
     }
   }
@@ -113,25 +113,25 @@ extension PagesController {
 extension PagesController {
 
   func viewControllerIndex(viewController: UIViewController) -> Int? {
-    return find(self.pages, viewController)
+    return find(pages, viewController)
   }
 
   private func toggle() {
-    for recognizer in self.gestureRecognizers {
-      (recognizer as! UIGestureRecognizer).enabled = self.enableSwipe
+    for recognizer in gestureRecognizers {
+      (recognizer as! UIGestureRecognizer).enabled = enableSwipe
     }
   }
 
   private func addViewController(viewController: UIViewController) {
-    self.pages.append(viewController)
+    pages.append(viewController)
 
-    if self.pages.count == 1 {
-      self.setViewControllers([viewController],
+    if pages.count == 1 {
+      setViewControllers([viewController],
         direction: .Forward,
         animated: true,
         completion: nil)
-      if self.setNavigationTitle {
-        self.title = viewController.title
+      if setNavigationTitle {
+        title = viewController.title
       }
     }
   }
@@ -140,7 +140,7 @@ extension PagesController {
 extension Array {
 
   func at(index: Int?) -> T? {
-    if let index = index where index >= 0 && index < self.endIndex {
+    if let index = index where index >= 0 && index < endIndex {
       return self[index]
     } else {
       return nil
