@@ -31,15 +31,15 @@ import UIKit
 
     delegate = self
     dataSource = self
-    goto(startPage)
+    goTo(startPage)
   }
 }
 
 // MARK: Public methods
 extension PagesController {
 
-  public func goto(index: Int) {
     if index > -1 && index < pages.count {
+  public func goTo(index: Int) {
       let direction: UIPageViewControllerNavigationDirection = (index > currentIndex) ? .Forward : .Reverse
       let viewController = pages[index]
       currentIndex = index
@@ -53,11 +53,11 @@ extension PagesController {
   }
 
   public func next() {
-    goto(currentIndex + 1)
+    goTo(currentIndex + 1)
   }
 
   public func previous() {
-    goto(currentIndex - 1)
+    goTo(currentIndex - 1)
   }
 
   public func add(viewControllers: [UIViewController]) {
