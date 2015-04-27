@@ -13,7 +13,7 @@ import UIKit
 
   lazy var pages = Array<UIViewController>()
 
-  var currentIndex: Int = 0
+  public private(set) var currentIndex: Int = 0
 
   public convenience init(_ pages: [UIViewController],
     transitionStyle: UIPageViewControllerTransitionStyle = .Scroll,
