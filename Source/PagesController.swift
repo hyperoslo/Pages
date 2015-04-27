@@ -155,7 +155,7 @@ extension PagesController {
             atPage: currentIndex)
         })
       if setNavigationTitle {
-        //title = viewController.title
+        title = viewController.title
       }
     }
   }
