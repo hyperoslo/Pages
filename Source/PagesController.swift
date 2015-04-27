@@ -1,5 +1,10 @@
 import UIKit
 
+@objc(HYPPagesControllerDelegate) public protocol PagesControllerDelegate {
+
+  func pageViewController(pageViewController: UIPageViewController, setViewController viewController: UIViewController, atPage page: Int)
+}
+
 @objc(HYPPagesController) public class PagesController: UIPageViewController, UIPageViewControllerDelegate, UIPageViewControllerDataSource {
 
   public var startPage = 0
@@ -14,6 +19,8 @@ import UIKit
   lazy var pages = Array<UIViewController>()
 
   public private(set) var currentIndex = 0
+
+  var pagesDelegate: PagesControllerDelegate?
 
   public convenience init(_ pages: [UIViewController],
     transitionStyle: UIPageViewControllerTransitionStyle = .Scroll,
@@ -45,7 +52,13 @@ extension PagesController {
       currentIndex = index
       setViewControllers([viewController],
         direction: direction,
-        animated: true, completion: nil)
+        animated: true,
+        completion: {
+          [unowned self] (finish: Bool) -> Void in
+          self.pagesDelegate?.pageViewController(self,
+            setViewController: viewController,
+            atPage: currentIndex)
+        })
       if setNavigationTitle {
         title = viewController.title
       }
@@ -107,6 +120,11 @@ extension PagesController {
     }
   }
 
+  public func pageViewController(pageViewController: UIPageViewController, didFinishAnimating finished: Bool, previousViewControllers: [AnyObject], transitionCompleted completed: Bool) {
+    if completed {
+      pagesDelegate?.pageViewController(self, setViewController: pages[currentIndex], atPage: currentIndex)
+    }
+  }
 }
 
 // MARK: Private methods
@@ -130,9 +148,14 @@ extension PagesController {
       setViewControllers([viewController],
         direction: .Forward,
         animated: true,
-        completion: nil)
+        completion: {
+          [unowned self] (finish: Bool) -> Void in
+          self.pagesDelegate?.pageViewController(self,
+            setViewController: viewController,
+            atPage: currentIndex)
+        })
       if setNavigationTitle {
-        title = viewController.title
+        //title = viewController.title
       }
     }
   }
