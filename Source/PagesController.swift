@@ -20,7 +20,7 @@ import UIKit
 
   public private(set) var currentIndex = 0
 
-  var pagesDelegate: PagesControllerDelegate?
+  public var pagesDelegate: PagesControllerDelegate?
 
   public convenience init(_ pages: [UIViewController],
     transitionStyle: UIPageViewControllerTransitionStyle = .Scroll,
