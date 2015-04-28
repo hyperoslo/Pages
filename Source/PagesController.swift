@@ -37,7 +37,7 @@ import UIKit
   public private(set) var bottomLineView: UIView = {
     let view = UIView()
     view.setTranslatesAutoresizingMaskIntoConstraints(false)
-    view.backgroundColor = UIColor.whiteColor()
+    view.backgroundColor = .whiteColor()
     view.alpha = 0.4
     view.hidden = true
     return view
