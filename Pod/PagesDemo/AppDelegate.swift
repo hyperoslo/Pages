@@ -8,7 +8,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
 
       let viewController1 = UIViewController()
-      viewController1.view.backgroundColor = UIColor.redColor()
+      viewController1.view.backgroundColor = UIColor.blackColor()
       viewController1.title = "Controller A"
 
       let viewController2 = UIViewController()
@@ -16,7 +16,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
       viewController2.title = "Controller B"
 
       let viewController3 = UIViewController()
-      viewController3.view.backgroundColor = UIColor.greenColor()
+      viewController3.view.backgroundColor = UIColor.redColor()
       viewController3.title = "Controller C"
 
       let viewController4 = UIViewController()
@@ -30,6 +30,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         ])
 
       pages.enableSwipe = false
+      pages.showBottomLine = true
 
       let navigationController = UINavigationController(rootViewController: pages)
 
