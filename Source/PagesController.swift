@@ -120,7 +120,8 @@ extension PagesController {
     }
   }
 
-  public func pageViewController(pageViewController: UIPageViewController, didFinishAnimating finished: Bool, previousViewControllers: [AnyObject], transitionCompleted completed: Bool) {
+  public func pageViewController(pageViewController: UIPageViewController, didFinishAnimating finished: Bool,
+    previousViewControllers: [AnyObject], transitionCompleted completed: Bool) {
     if completed {
       pagesDelegate?.pageViewController(self, setViewController: pages[currentIndex], atPage: currentIndex)
     }
