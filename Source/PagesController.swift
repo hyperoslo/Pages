@@ -7,6 +7,12 @@ import UIKit
 
 @objc(HYPPagesController) public class PagesController: UIPageViewController, UIPageViewControllerDelegate, UIPageViewControllerDataSource {
 
+  struct Dimensions {
+    static let bottomLineHeight: CGFloat = 1.0
+    static let bottomLineSideMargin: CGFloat = 40.0
+    static let bottomLineBottomMargin: CGFloat = 36.0
+  }
+
   public var startPage = 0
   public var setNavigationTitle = true
 
@@ -16,11 +22,26 @@ import UIKit
     }
   }
 
+  public var showBottomLine = false {
+    didSet {
+      bottomLineView.hidden = !showBottomLine
+    }
+  }
+
   lazy var pages = Array<UIViewController>()
 
   public private(set) var currentIndex = 0
 
   public var pagesDelegate: PagesControllerDelegate?
+
+  public private(set) var bottomLineView: UIView = {
+    let view = UIView(frame: CGRectZero)
+    view.setTranslatesAutoresizingMaskIntoConstraints(false)
+    view.backgroundColor = UIColor.whiteColor()
+    view.alpha = 0.4
+    view.hidden = true
+    return view
+    }()
 
   public convenience init(_ pages: [UIViewController],
     transitionStyle: UIPageViewControllerTransitionStyle = .Scroll,
@@ -38,6 +59,10 @@ import UIKit
 
     delegate = self
     dataSource = self
+
+    view.addSubview(bottomLineView)
+    addConstraints()
+    view.bringSubviewToFront(bottomLineView)
     goTo(startPage)
   }
 }
@@ -56,7 +81,7 @@ extension PagesController {
         completion: { [unowned self] finished in
           self.pagesDelegate?.pageViewController(self,
             setViewController: viewController,
-            atPage: currentIndex)
+            atPage: self.currentIndex)
         })
       if setNavigationTitle {
         title = viewController.title
@@ -121,9 +146,9 @@ extension PagesController {
 
   public func pageViewController(pageViewController: UIPageViewController, didFinishAnimating finished: Bool,
     previousViewControllers: [AnyObject], transitionCompleted completed: Bool) {
-    if completed {
-      pagesDelegate?.pageViewController(self, setViewController: pages[currentIndex], atPage: currentIndex)
-    }
+      if completed {
+        pagesDelegate?.pageViewController(self, setViewController: pages[currentIndex], atPage: currentIndex)
+      }
   }
 }
 
@@ -151,12 +176,30 @@ extension PagesController {
         completion: { [unowned self] finished in
           self.pagesDelegate?.pageViewController(self,
             setViewController: viewController,
-            atPage: currentIndex)
+            atPage: self.currentIndex)
         })
       if setNavigationTitle {
         title = viewController.title
       }
     }
+  }
+
+  private func addConstraints() {
+    view.addConstraint(NSLayoutConstraint(item: bottomLineView, attribute: NSLayoutAttribute.Bottom,
+      relatedBy: NSLayoutRelation.Equal, toItem: view, attribute: NSLayoutAttribute.Bottom,
+      multiplier: 1, constant: -Dimensions.bottomLineBottomMargin))
+
+    view.addConstraint(NSLayoutConstraint(item: bottomLineView, attribute: NSLayoutAttribute.Left,
+      relatedBy: NSLayoutRelation.Equal, toItem: view, attribute: NSLayoutAttribute.Left,
+      multiplier: 1, constant: Dimensions.bottomLineSideMargin))
+
+    view.addConstraint(NSLayoutConstraint(item: bottomLineView, attribute: NSLayoutAttribute.Right,
+      relatedBy: NSLayoutRelation.Equal, toItem: view, attribute: NSLayoutAttribute.Right,
+      multiplier: 1, constant: -Dimensions.bottomLineSideMargin))
+
+    view.addConstraint(NSLayoutConstraint(item: bottomLineView, attribute: NSLayoutAttribute.Height,
+      relatedBy: NSLayoutRelation.Equal, toItem: nil, attribute: NSLayoutAttribute.NotAnAttribute,
+      multiplier: 1, constant: Dimensions.bottomLineHeight))
   }
 }
 
@@ -179,4 +222,3 @@ func nextIndex(x: Int?) -> Int? {
 func prevIndex(x: Int?) -> Int? {
   return x.map { $0 - 1 }
 }
-
