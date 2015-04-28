@@ -35,7 +35,7 @@ import UIKit
   public var pagesDelegate: PagesControllerDelegate?
 
   public private(set) var bottomLineView: UIView = {
-    let view = UIView(frame: CGRectZero)
+    let view = UIView()
     view.setTranslatesAutoresizingMaskIntoConstraints(false)
     view.backgroundColor = UIColor.whiteColor()
     view.alpha = 0.4
@@ -185,20 +185,20 @@ extension PagesController {
   }
 
   private func addConstraints() {
-    view.addConstraint(NSLayoutConstraint(item: bottomLineView, attribute: NSLayoutAttribute.Bottom,
-      relatedBy: NSLayoutRelation.Equal, toItem: view, attribute: NSLayoutAttribute.Bottom,
+    view.addConstraint(NSLayoutConstraint(item: bottomLineView, attribute: .Bottom,
+      relatedBy: .Equal, toItem: view, attribute: .Bottom,
       multiplier: 1, constant: -Dimensions.bottomLineBottomMargin))
 
-    view.addConstraint(NSLayoutConstraint(item: bottomLineView, attribute: NSLayoutAttribute.Left,
-      relatedBy: NSLayoutRelation.Equal, toItem: view, attribute: NSLayoutAttribute.Left,
+    view.addConstraint(NSLayoutConstraint(item: bottomLineView, attribute: .Left,
+      relatedBy: .Equal, toItem: view, attribute: .Left,
       multiplier: 1, constant: Dimensions.bottomLineSideMargin))
 
-    view.addConstraint(NSLayoutConstraint(item: bottomLineView, attribute: NSLayoutAttribute.Right,
-      relatedBy: NSLayoutRelation.Equal, toItem: view, attribute: NSLayoutAttribute.Right,
+    view.addConstraint(NSLayoutConstraint(item: bottomLineView, attribute: .Right,
+      relatedBy: .Equal, toItem: view, attribute: .Right,
       multiplier: 1, constant: -Dimensions.bottomLineSideMargin))
 
-    view.addConstraint(NSLayoutConstraint(item: bottomLineView, attribute: NSLayoutAttribute.Height,
-      relatedBy: NSLayoutRelation.Equal, toItem: nil, attribute: NSLayoutAttribute.NotAnAttribute,
+    view.addConstraint(NSLayoutConstraint(item: bottomLineView, attribute: .Height,
+      relatedBy: .Equal, toItem: nil, attribute: .NotAnAttribute,
       multiplier: 1, constant: Dimensions.bottomLineHeight))
   }
 }
