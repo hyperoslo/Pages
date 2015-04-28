@@ -53,8 +53,7 @@ extension PagesController {
       setViewControllers([viewController],
         direction: direction,
         animated: true,
-        completion: {
-          [unowned self] (finish: Bool) -> Void in
+        completion: { [unowned self] finish in
           self.pagesDelegate?.pageViewController(self,
             setViewController: viewController,
             atPage: currentIndex)
@@ -149,8 +148,7 @@ extension PagesController {
       setViewControllers([viewController],
         direction: .Forward,
         animated: true,
-        completion: {
-          [unowned self] (finish: Bool) -> Void in
+        completion: { [unowned self] finish in
           self.pagesDelegate?.pageViewController(self,
             setViewController: viewController,
             atPage: currentIndex)
