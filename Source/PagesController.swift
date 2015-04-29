@@ -30,6 +30,10 @@ import UIKit
 
   lazy var pages = Array<UIViewController>()
 
+  public var pagesCount: Int {
+    return pages.count
+  }
+
   public private(set) var currentIndex = 0
 
   public var pagesDelegate: PagesControllerDelegate?
