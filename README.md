@@ -1,4 +1,4 @@
-![Pages logo](https://raw.githubusercontent.com/hyperoslo/Pages/feature/logo/Images/logo.png)
+![Pages logo](https://raw.githubusercontent.com/hyperoslo/Pages/feature/logo/Images/pages_logo.png)
 
 [![CI Status](http://img.shields.io/travis/hyperoslo/Pages.svg?style=flat)](https://travis-ci.org/hyperoslo/Pages)
 [![Version](https://img.shields.io/cocoapods/v/Pages.svg?style=flat)](http://cocoadocs.org/docsets/Pages)
