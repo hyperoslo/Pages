@@ -38,7 +38,7 @@ import UIKit
 
   public var pagesDelegate: PagesControllerDelegate?
 
-  public private(set) var bottomLineView: UIView = {
+  public private(set) lazy var bottomLineView: UIView = {
     let view = UIView()
     view.setTranslatesAutoresizingMaskIntoConstraints(false)
     view.backgroundColor = .whiteColor()
