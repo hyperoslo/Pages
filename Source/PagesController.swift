@@ -47,6 +47,8 @@ import UIKit
     return view
     }()
 
+  public private(set) var pageControl: UIPageControl?
+
   public convenience init(_ pages: [UIViewController],
     transitionStyle: UIPageViewControllerTransitionStyle = .Scroll,
     navigationOrientation: UIPageViewControllerNavigationOrientation = .Horizontal,
@@ -68,6 +70,16 @@ import UIKit
     addConstraints()
     view.bringSubviewToFront(bottomLineView)
     goTo(startPage)
+  }
+
+  public override func viewDidAppear(animated: Bool) {
+    super.viewDidAppear(animated)
+
+    for subview in view.subviews {
+      if subview is UIPageControl {
+        pageControl = subview as? UIPageControl
+      }
+    }
   }
 }
 
@@ -144,6 +156,10 @@ extension PagesController : UIPageViewControllerDelegate {
 
           if setNavigationTitle {
             title = viewController.title
+          }
+
+          if let pageControl = pageControl {
+            pageControl.currentPage = currentIndex
           }
 
           pagesDelegate?.pageViewController(self, setViewController: pages[currentIndex], atPage: currentIndex)
