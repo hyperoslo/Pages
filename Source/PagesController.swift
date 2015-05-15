@@ -129,29 +129,25 @@ extension PagesController : UIPageViewControllerDataSource {
   public func presentationIndexForPageViewController(pageViewController: UIPageViewController) -> Int {
     return currentIndex
   }
-
 }
 
 // MARK: UIPageViewControllerDelegate
 
 extension PagesController : UIPageViewControllerDelegate {
 
-  public func pageViewController(pageViewController: UIPageViewController, willTransitionToViewControllers pendingViewControllers: [AnyObject]) {
-
-    if let viewController = pendingViewControllers.first as? UIViewController,
-      index = viewControllerIndex(viewController) {
-        currentIndex = index
-
-        if setNavigationTitle {
-          title = viewController.title
-        }
-    }
-  }
-
   public func pageViewController(pageViewController: UIPageViewController, didFinishAnimating finished: Bool,
     previousViewControllers: [AnyObject], transitionCompleted completed: Bool) {
     if completed {
-      pagesDelegate?.pageViewController(self, setViewController: pages[currentIndex], atPage: currentIndex)
+      if let viewController = pageViewController.viewControllers.last as? UIViewController,
+        index = viewControllerIndex(viewController) {
+          currentIndex = index
+
+          if setNavigationTitle {
+            title = viewController.title
+          }
+
+          pagesDelegate?.pageViewController(self, setViewController: pages[currentIndex], atPage: currentIndex)
+      }
     }
   }
 }
@@ -216,7 +212,6 @@ extension Array {
       return nil
     }
   }
-
 }
 
 func nextIndex(x: Int?) -> Int? {
