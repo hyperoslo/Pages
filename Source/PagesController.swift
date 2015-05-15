@@ -5,7 +5,7 @@ import UIKit
   func pageViewController(pageViewController: UIPageViewController, setViewController viewController: UIViewController, atPage page: Int)
 }
 
-@objc(HYPPagesController) public class PagesController: UIPageViewController, UIPageViewControllerDelegate, UIPageViewControllerDataSource {
+@objc(HYPPagesController) public class PagesController: UIPageViewController {
 
   struct Dimensions {
     static let bottomLineHeight: CGFloat = 1.0
@@ -38,7 +38,7 @@ import UIKit
 
   public var pagesDelegate: PagesControllerDelegate?
 
-  public private(set) var bottomLineView: UIView = {
+  public private(set) lazy var bottomLineView: UIView = {
     let view = UIView()
     view.setTranslatesAutoresizingMaskIntoConstraints(false)
     view.backgroundColor = .whiteColor()
@@ -46,6 +46,8 @@ import UIKit
     view.hidden = true
     return view
     }()
+
+  public private(set) var pageControl: UIPageControl?
 
   public convenience init(_ pages: [UIViewController],
     transitionStyle: UIPageViewControllerTransitionStyle = .Scroll,
@@ -68,6 +70,16 @@ import UIKit
     addConstraints()
     view.bringSubviewToFront(bottomLineView)
     goTo(startPage)
+  }
+
+  public override func viewDidAppear(animated: Bool) {
+    super.viewDidAppear(animated)
+
+    for subview in view.subviews {
+      if subview is UIPageControl {
+        pageControl = subview as? UIPageControl
+      }
+    }
   }
 }
 
@@ -110,7 +122,7 @@ extension PagesController {
 
 // MARK: UIPageViewControllerDataSource
 
-extension PagesController {
+extension PagesController : UIPageViewControllerDataSource {
 
   public func pageViewController(pageViewController: UIPageViewController, viewControllerBeforeViewController viewController: UIViewController) -> UIViewController? {
     let index = prevIndex(viewControllerIndex(viewController))
@@ -129,29 +141,29 @@ extension PagesController {
   public func presentationIndexForPageViewController(pageViewController: UIPageViewController) -> Int {
     return currentIndex
   }
-
 }
 
 // MARK: UIPageViewControllerDelegate
 
-extension PagesController {
-
-  public func pageViewController(pageViewController: UIPageViewController, willTransitionToViewControllers pendingViewControllers: [AnyObject]) {
-
-    if let viewController = pendingViewControllers.first as? UIViewController,
-      index = viewControllerIndex(viewController) {
-        currentIndex = index
-
-        if setNavigationTitle {
-          title = viewController.title
-        }
-    }
-  }
+extension PagesController : UIPageViewControllerDelegate {
 
   public func pageViewController(pageViewController: UIPageViewController, didFinishAnimating finished: Bool,
     previousViewControllers: [AnyObject], transitionCompleted completed: Bool) {
     if completed {
-      pagesDelegate?.pageViewController(self, setViewController: pages[currentIndex], atPage: currentIndex)
+      if let viewController = pageViewController.viewControllers.last as? UIViewController,
+        index = viewControllerIndex(viewController) {
+          currentIndex = index
+
+          if setNavigationTitle {
+            title = viewController.title
+          }
+
+          if let pageControl = pageControl {
+            pageControl.currentPage = currentIndex
+          }
+
+          pagesDelegate?.pageViewController(self, setViewController: pages[currentIndex], atPage: currentIndex)
+      }
     }
   }
 }
@@ -216,7 +228,6 @@ extension Array {
       return nil
     }
   }
-
 }
 
 func nextIndex(x: Int?) -> Int? {
