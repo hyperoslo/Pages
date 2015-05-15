@@ -5,7 +5,7 @@ import UIKit
   func pageViewController(pageViewController: UIPageViewController, setViewController viewController: UIViewController, atPage page: Int)
 }
 
-@objc(HYPPagesController) public class PagesController: UIPageViewController, UIPageViewControllerDelegate, UIPageViewControllerDataSource {
+@objc(HYPPagesController) public class PagesController: UIPageViewController {
 
   struct Dimensions {
     static let bottomLineHeight: CGFloat = 1.0
@@ -110,7 +110,7 @@ extension PagesController {
 
 // MARK: UIPageViewControllerDataSource
 
-extension PagesController {
+extension PagesController : UIPageViewControllerDataSource {
 
   public func pageViewController(pageViewController: UIPageViewController, viewControllerBeforeViewController viewController: UIViewController) -> UIViewController? {
     let index = prevIndex(viewControllerIndex(viewController))
@@ -134,7 +134,7 @@ extension PagesController {
 
 // MARK: UIPageViewControllerDelegate
 
-extension PagesController {
+extension PagesController : UIPageViewControllerDelegate {
 
   public func pageViewController(pageViewController: UIPageViewController, willTransitionToViewControllers pendingViewControllers: [AnyObject]) {
 
