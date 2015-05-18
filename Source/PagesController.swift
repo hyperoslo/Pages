@@ -174,7 +174,7 @@ extension PagesController : UIPageViewControllerDelegate {
 
 extension PagesController {
 
-  func setViewController(viewController: UIViewController, atPage page:Int) {
+  private func setViewController(viewController: UIViewController, atPage page:Int) {
     pagesDelegate?.pageViewController(self,
       setViewController: viewController,
       atPage: page)
