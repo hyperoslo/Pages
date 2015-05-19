@@ -178,9 +178,7 @@ extension PagesController {
     pagesDelegate?.pageViewController(self,
       setViewController: viewController,
       atPage: page)
-    if let pageChangeHandler = pageChangeHandler {
-      pageChangeHandler(viewController: viewController, page: page)
-    }
+    pageChangeHandler?(viewController: viewController, page: page)
   }
 
   func viewControllerIndex(viewController: UIViewController) -> Int? {
