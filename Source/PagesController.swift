@@ -38,8 +38,6 @@ import UIKit
 
   public var pagesDelegate: PagesControllerDelegate?
 
-  public var pageChangeHandler: ((viewController: UIViewController, page: Int) -> Void)?
-
   public private(set) lazy var bottomLineView: UIView = {
     let view = UIView()
     view.setTranslatesAutoresizingMaskIntoConstraints(false)
@@ -97,9 +95,9 @@ extension PagesController {
         direction: direction,
         animated: true,
         completion: { [unowned self] finished in
-          if finished {
-            self.setViewController(viewController, atPage: self.currentIndex)
-          }
+          self.pagesDelegate?.pageViewController(self,
+            setViewController: viewController,
+            atPage: self.currentIndex)
         })
       if setNavigationTitle {
         title = viewController.title
@@ -164,7 +162,7 @@ extension PagesController : UIPageViewControllerDelegate {
             pageControl.currentPage = currentIndex
           }
 
-          setViewController(pages[currentIndex], atPage: currentIndex)
+          pagesDelegate?.pageViewController(self, setViewController: pages[currentIndex], atPage: currentIndex)
       }
     }
   }
@@ -173,13 +171,6 @@ extension PagesController : UIPageViewControllerDelegate {
 // MARK: Private methods
 
 extension PagesController {
-
-  private func setViewController(viewController: UIViewController, atPage page:Int) {
-    pagesDelegate?.pageViewController(self,
-      setViewController: viewController,
-      atPage: page)
-    pageChangeHandler?(viewController: viewController, page: page)
-  }
 
   func viewControllerIndex(viewController: UIViewController) -> Int? {
     return find(pages, viewController)
@@ -199,9 +190,9 @@ extension PagesController {
         direction: .Forward,
         animated: true,
         completion: { [unowned self] finished in
-          if finished {
-            self.setViewController(viewController, atPage: self.currentIndex)
-          }
+          self.pagesDelegate?.pageViewController(self,
+            setViewController: viewController,
+            atPage: self.currentIndex)
         })
       if setNavigationTitle {
         title = viewController.title
