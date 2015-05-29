@@ -177,8 +177,10 @@ extension PagesController {
   }
 
   private func toggle() {
-    for recognizer in gestureRecognizers {
-      (recognizer as! UIGestureRecognizer).enabled = enableSwipe
+    for view in self.view.subviews {
+      if let scrollView = view as? UIScrollView {
+        scrollView.scrollEnabled = enableSwipe
+      }
     }
   }
 
