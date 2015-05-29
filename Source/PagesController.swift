@@ -177,8 +177,8 @@ extension PagesController {
   }
 
   private func toggle() {
-    for view in self.view.subviews {
-      (view as? UIScrollView)?.scrollEnabled = enableSwipe
+    for subview in view.subviews {
+      (subview as? UIScrollView)?.scrollEnabled = enableSwipe
     }
   }
 
