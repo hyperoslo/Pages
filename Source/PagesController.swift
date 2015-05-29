@@ -177,11 +177,9 @@ extension PagesController {
   }
 
   private func toggle() {
-    for view in self.view.subviews {
-      if let scrollView = view as? UIScrollView {
-        scrollView.scrollEnabled = enableSwipe
-      }
-    }
+    let predicate = NSPredicate { (view, _) in return (view as? UIScrollView) != nil  }
+    let views = (self.view.subviews as NSArray).filteredArrayUsingPredicate(predicate) as! [UIScrollView]
+    views.map { $0.scrollEnabled = self.enableSwipe }
   }
 
   private func addViewController(viewController: UIViewController) {
