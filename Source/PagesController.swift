@@ -28,6 +28,8 @@ import UIKit
     }
   }
 
+  public var showPageControl = true
+  
   lazy var pages = Array<UIViewController>()
 
   public var pagesCount: Int {
