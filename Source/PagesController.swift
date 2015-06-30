@@ -29,7 +29,7 @@ import UIKit
   }
 
   public var showPageControl = true
-  
+
   lazy var pages = Array<UIViewController>()
 
   public var pagesCount: Int {
@@ -137,11 +137,11 @@ extension PagesController : UIPageViewControllerDataSource {
   }
 
   public func presentationCountForPageViewController(pageViewController: UIPageViewController) -> Int {
-    return pages.count
+    return showPageControl ? pages.count : 0
   }
 
   public func presentationIndexForPageViewController(pageViewController: UIPageViewController) -> Int {
-    return currentIndex
+    return showPageControl ? currentIndex : 0
   }
 }
 
