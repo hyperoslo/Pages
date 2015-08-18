@@ -1,11 +1,11 @@
 import UIKit
 
-@objc(HYPPagesControllerDelegate) public protocol PagesControllerDelegate {
+public protocol PagesControllerDelegate {
 
   func pageViewController(pageViewController: UIPageViewController, setViewController viewController: UIViewController, atPage page: Int)
 }
 
-@objc(HYPPagesController) public class PagesController: UIPageViewController {
+public class PagesController: UIPageViewController {
 
   struct Dimensions {
     static let bottomLineHeight: CGFloat = 1.0
