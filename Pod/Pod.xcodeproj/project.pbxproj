@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		B50EF7011B830F8B00468EC9 /* Array+Sugar.swift in Sources */ = {isa = PBXBuildFile; fileRef = B50EF7001B830F8B00468EC9 /* Array+Sugar.swift */; };
+		B50EF7021B830F9100468EC9 /* Array+Sugar.swift in Sources */ = {isa = PBXBuildFile; fileRef = B50EF7001B830F8B00468EC9 /* Array+Sugar.swift */; };
 		BDA157F71AD7E6D90011D55A /* PagesTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = BDA157F61AD7E6D90011D55A /* PagesTests.swift */; };
 		BDA157FC1AD7E6FF0011D55A /* PagesController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BDA157FB1AD7E6FF0011D55A /* PagesController.swift */; };
 		BDA1583B1AD7EEBD0011D55A /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = BDA1583A1AD7EEBD0011D55A /* AppDelegate.swift */; };
@@ -19,6 +21,7 @@
 		14C136521AB784B200B7B07A /* CONTRIBUTING.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; name = CONTRIBUTING.md; path = ../CONTRIBUTING.md; sourceTree = "<group>"; };
 		14C136541AB784B200B7B07A /* LICENSE.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; name = LICENSE.md; path = ../LICENSE.md; sourceTree = "<group>"; };
 		14C136551AB784B200B7B07A /* README.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; name = README.md; path = ../README.md; sourceTree = "<group>"; };
+		B50EF7001B830F8B00468EC9 /* Array+Sugar.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Array+Sugar.swift"; sourceTree = "<group>"; };
 		BDA157F21AD7E6D90011D55A /* PagesTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = PagesTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		BDA157F51AD7E6D90011D55A /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		BDA157F61AD7E6D90011D55A /* PagesTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PagesTests.swift; sourceTree = "<group>"; };
@@ -84,6 +87,7 @@
 			isa = PBXGroup;
 			children = (
 				BDA157FB1AD7E6FF0011D55A /* PagesController.swift */,
+				B50EF7001B830F8B00468EC9 /* Array+Sugar.swift */,
 			);
 			name = Source;
 			path = ../Source;
@@ -167,7 +171,9 @@
 		146D728B1AB782920058798C /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
-				LastUpgradeCheck = 0620;
+				LastSwiftMigration = 0700;
+				LastSwiftUpdateCheck = 0700;
+				LastUpgradeCheck = 0700;
 				ORGANIZATIONNAME = Hyper;
 				TargetAttributes = {
 					BDA157F11AD7E6D90011D55A = {
@@ -221,6 +227,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				BDA157FC1AD7E6FF0011D55A /* PagesController.swift in Sources */,
+				B50EF7011B830F8B00468EC9 /* Array+Sugar.swift in Sources */,
 				BDA157F71AD7E6D90011D55A /* PagesTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -230,6 +237,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				BDA158581AD7EF550011D55A /* PagesController.swift in Sources */,
+				B50EF7021B830F9100468EC9 /* Array+Sugar.swift in Sources */,
 				BDA1583B1AD7EEBD0011D55A /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -257,6 +265,7 @@
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				COPY_PHASE_STRIP = NO;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
 				GCC_DYNAMIC_NO_PIC = NO;
 				GCC_OPTIMIZATION_LEVEL = 0;
@@ -329,6 +338,7 @@
 				INFOPLIST_FILE = PagesTests/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.3;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "no.hyper.$(PRODUCT_NAME:rfc1034identifier)";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 			};
@@ -346,6 +356,7 @@
 				INFOPLIST_FILE = PagesTests/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.3;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "no.hyper.$(PRODUCT_NAME:rfc1034identifier)";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
 			name = Release;
@@ -363,6 +374,7 @@
 				INFOPLIST_FILE = PagesDemo/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.3;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "no.hyper.$(PRODUCT_NAME:rfc1034identifier)";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -378,6 +390,7 @@
 				INFOPLIST_FILE = PagesDemo/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.3;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "no.hyper.$(PRODUCT_NAME:rfc1034identifier)";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
