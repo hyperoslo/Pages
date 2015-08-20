@@ -9,6 +9,9 @@
 /* Begin PBXBuildFile section */
 		B50EF7011B830F8B00468EC9 /* Array+Sugar.swift in Sources */ = {isa = PBXBuildFile; fileRef = B50EF7001B830F8B00468EC9 /* Array+Sugar.swift */; };
 		B50EF7021B830F9100468EC9 /* Array+Sugar.swift in Sources */ = {isa = PBXBuildFile; fileRef = B50EF7001B830F8B00468EC9 /* Array+Sugar.swift */; };
+		B5419FBD1B8332D100492760 /* UIStoryboard+Sugar.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5419FBC1B8332D100492760 /* UIStoryboard+Sugar.swift */; };
+		B5419FBE1B8332D500492760 /* UIStoryboard+Sugar.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5419FBC1B8332D100492760 /* UIStoryboard+Sugar.swift */; };
+		B5419FC31B8334AF00492760 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B5419FC21B8334AF00492760 /* Main.storyboard */; };
 		BDA157F71AD7E6D90011D55A /* PagesTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = BDA157F61AD7E6D90011D55A /* PagesTests.swift */; };
 		BDA157FC1AD7E6FF0011D55A /* PagesController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BDA157FB1AD7E6FF0011D55A /* PagesController.swift */; };
 		BDA1583B1AD7EEBD0011D55A /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = BDA1583A1AD7EEBD0011D55A /* AppDelegate.swift */; };
@@ -22,6 +25,8 @@
 		14C136541AB784B200B7B07A /* LICENSE.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; name = LICENSE.md; path = ../LICENSE.md; sourceTree = "<group>"; };
 		14C136551AB784B200B7B07A /* README.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; name = README.md; path = ../README.md; sourceTree = "<group>"; };
 		B50EF7001B830F8B00468EC9 /* Array+Sugar.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Array+Sugar.swift"; sourceTree = "<group>"; };
+		B5419FBC1B8332D100492760 /* UIStoryboard+Sugar.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIStoryboard+Sugar.swift"; sourceTree = "<group>"; };
+		B5419FC21B8334AF00492760 /* Main.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Main.storyboard; sourceTree = "<group>"; };
 		BDA157F21AD7E6D90011D55A /* PagesTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = PagesTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		BDA157F51AD7E6D90011D55A /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		BDA157F61AD7E6D90011D55A /* PagesTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PagesTests.swift; sourceTree = "<group>"; };
@@ -88,6 +93,7 @@
 			children = (
 				BDA157FB1AD7E6FF0011D55A /* PagesController.swift */,
 				B50EF7001B830F8B00468EC9 /* Array+Sugar.swift */,
+				B5419FBC1B8332D100492760 /* UIStoryboard+Sugar.swift */,
 			);
 			name = Source;
 			path = ../Source;
@@ -113,6 +119,7 @@
 		BDA158371AD7EEBD0011D55A /* PagesDemo */ = {
 			isa = PBXGroup;
 			children = (
+				B5419FC21B8334AF00492760 /* Main.storyboard */,
 				BDA1583A1AD7EEBD0011D55A /* AppDelegate.swift */,
 				BDA158411AD7EEBD0011D55A /* Images.xcassets */,
 				BDA158381AD7EEBD0011D55A /* Supporting Files */,
@@ -216,6 +223,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				BDA158421AD7EEBD0011D55A /* Images.xcassets in Resources */,
+				B5419FC31B8334AF00492760 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -229,6 +237,7 @@
 				BDA157FC1AD7E6FF0011D55A /* PagesController.swift in Sources */,
 				B50EF7011B830F8B00468EC9 /* Array+Sugar.swift in Sources */,
 				BDA157F71AD7E6D90011D55A /* PagesTests.swift in Sources */,
+				B5419FBD1B8332D100492760 /* UIStoryboard+Sugar.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -239,6 +248,7 @@
 				BDA158581AD7EF550011D55A /* PagesController.swift in Sources */,
 				B50EF7021B830F9100468EC9 /* Array+Sugar.swift in Sources */,
 				BDA1583B1AD7EEBD0011D55A /* AppDelegate.swift in Sources */,
+				B5419FBE1B8332D500492760 /* UIStoryboard+Sugar.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

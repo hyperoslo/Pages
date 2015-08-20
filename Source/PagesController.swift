@@ -223,3 +223,14 @@ extension PagesController {
       multiplier: 1, constant: Dimensions.bottomLineHeight))
   }
 }
+
+// MARK: Storyboard
+
+extension PagesController {
+  
+  public convenience init(_ storyboardIds: [String], storyboard: UIStoryboard = UIStoryboard.Main) {
+    let pages = storyboardIds.map(storyboard.instantiateViewControllerWithIdentifier)
+    self.init(pages)
+  }
+}
+
