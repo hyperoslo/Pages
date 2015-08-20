@@ -10,9 +10,9 @@ extension Array {
 }
 
 func nextIndex(x: Int?) -> Int? {
-  return x.map { $0 + 1 }
+  return x?.successor()
 }
 
 func prevIndex(x: Int?) -> Int? {
-  return x.map { $0 - 1 }
+  return x?.predecessor()
 }
