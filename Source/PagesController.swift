@@ -38,7 +38,7 @@ import UIKit
 
   public private(set) var currentIndex = 0
 
-  public var pagesDelegate: PagesControllerDelegate?
+  public weak var pagesDelegate: PagesControllerDelegate?
 
   public private(set) lazy var bottomLineView: UIView = {
     let view = UIView()
