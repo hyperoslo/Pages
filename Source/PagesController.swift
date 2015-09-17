@@ -42,7 +42,7 @@ import UIKit
 
   public private(set) lazy var bottomLineView: UIView = {
     let view = UIView()
-    view.setTranslatesAutoresizingMaskIntoConstraints(false)
+    view.translatesAutoresizingMaskIntoConstraints = false
     view.backgroundColor = .whiteColor()
     view.alpha = 0.4
     view.hidden = true
@@ -54,7 +54,7 @@ import UIKit
   public convenience init(_ pages: [UIViewController],
     transitionStyle: UIPageViewControllerTransitionStyle = .Scroll,
     navigationOrientation: UIPageViewControllerNavigationOrientation = .Horizontal,
-    options: [NSObject : AnyObject]? = nil) {
+    options: [String : AnyObject]? = nil) {
       self.init(transitionStyle: transitionStyle,
         navigationOrientation: navigationOrientation,
         options: options)
@@ -150,9 +150,9 @@ extension PagesController : UIPageViewControllerDataSource {
 extension PagesController : UIPageViewControllerDelegate {
 
   public func pageViewController(pageViewController: UIPageViewController, didFinishAnimating finished: Bool,
-    previousViewControllers: [AnyObject], transitionCompleted completed: Bool) {
+    previousViewControllers: [UIViewController], transitionCompleted completed: Bool) {
     if completed {
-      if let viewController = pageViewController.viewControllers.last as? UIViewController,
+      if let viewController = pageViewController.viewControllers?.last,
         index = viewControllerIndex(viewController) {
           currentIndex = index
 
@@ -175,7 +175,7 @@ extension PagesController : UIPageViewControllerDelegate {
 extension PagesController {
 
   func viewControllerIndex(viewController: UIViewController) -> Int? {
-    return find(pages, viewController)
+    return pages.indexOf(viewController)
   }
 
   private func toggle() {
@@ -223,3 +223,14 @@ extension PagesController {
       multiplier: 1, constant: Dimensions.bottomLineHeight))
   }
 }
+
+// MARK: Storyboard
+
+extension PagesController {
+  
+  public convenience init(_ storyboardIds: [String], storyboard: UIStoryboard = UIStoryboard.Main) {
+    let pages = storyboardIds.map(storyboard.instantiateViewControllerWithIdentifier)
+    self.init(pages)
+  }
+}
+
