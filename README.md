@@ -2,6 +2,7 @@
 
 [![CI Status](http://img.shields.io/travis/hyperoslo/Pages.svg?style=flat)](https://travis-ci.org/hyperoslo/Pages)
 [![Version](https://img.shields.io/cocoapods/v/Pages.svg?style=flat)](http://cocoadocs.org/docsets/Pages)
+[![Carthage Compatible](https://img.shields.io/badge/Carthage-compatible-4BC51D.svg?style=flat)](https://github.com/Carthage/Carthage)
 [![License](https://img.shields.io/cocoapods/l/Pages.svg?style=flat)](http://cocoadocs.org/docsets/Pages)
 [![Platform](https://img.shields.io/cocoapods/p/Pages.svg?style=flat)](http://cocoadocs.org/docsets/Pages)
 
@@ -29,6 +30,13 @@ it, simply add the following line to your Podfile:
 
 ```ruby
 pod 'Pages'
+```
+
+**Pages** is also available through [Carthage](https://github.com/Carthage/Carthage).
+To install just write into your Cartfile:
+
+```ruby
+github "hyperoslo/Pages"
 ```
 
 ## Author
