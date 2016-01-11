@@ -1,0 +1,14 @@
+PODS:
+  - Pages (0.6.2)
+
+DEPENDENCIES:
+  - Pages (from `../../`)
+
+EXTERNAL SOURCES:
+  Pages:
+    :path: ../../
+
+SPEC CHECKSUMS:
+  Pages: 6c042132f8c63c34d242789b7763d4c64e9681a0
+
+COCOAPODS: 0.39.0
