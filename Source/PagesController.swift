@@ -94,9 +94,9 @@ import UIKit
 // MARK: Public methods
 extension PagesController {
 
-  open func goTo(_ index: Int) {
-    if index >= 0 && index < pages.count {
-      let direction: UIPageViewControllerNavigationDirection = (index > currentIndex) ? .forward : .reverse
+  public func goTo(index: Int) {
+    if index >= startPage && index < pages.count {
+      let direction: UIPageViewControllerNavigationDirection = (index > currentIndex) ? .Forward : .Reverse
       let viewController = pages[index]
       currentIndex = index
       setViewControllers([viewController],
