@@ -29,6 +29,9 @@ import UIKit
   }
 
   public var showPageControl = true
+  public var pageControlBackgoundColor: UIColor?
+  public var pageIndicatorTintColor: UIColor?
+  public var currentPageIndicatorTintColor: UIColor?
 
   lazy var pages = Array<UIViewController>()
 
@@ -80,6 +83,10 @@ import UIKit
     for subview in view.subviews {
       if subview is UIPageControl {
         pageControl = subview as? UIPageControl
+        
+        pageControl?.backgroundColor = pageControlBackgoundColor
+        pageControl?.pageIndicatorTintColor = pageIndicatorTintColor
+        pageControl?.currentPageIndicatorTintColor = currentPageIndicatorTintColor
       }
     }
   }
