@@ -11,6 +11,7 @@
 		B5419FC31B8334AF00492760 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B5419FC21B8334AF00492760 /* Main.storyboard */; };
 		BDA1583B1AD7EEBD0011D55A /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = BDA1583A1AD7EEBD0011D55A /* AppDelegate.swift */; };
 		BDA158421AD7EEBD0011D55A /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = BDA158411AD7EEBD0011D55A /* Images.xcassets */; };
+		D21166C21D246AC500DF0F05 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D21166C11D246AC500DF0F05 /* ViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -21,6 +22,7 @@
 		BDA158391AD7EEBD0011D55A /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		BDA1583A1AD7EEBD0011D55A /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		BDA158411AD7EEBD0011D55A /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
+		D21166C11D246AC500DF0F05 /* ViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		ED566712FA0708F6D81C017F /* Pods-PagesDemo.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PagesDemo.debug.xcconfig"; path = "Pods/Target Support Files/Pods-PagesDemo/Pods-PagesDemo.debug.xcconfig"; sourceTree = "<group>"; };
 		F94DB02BD60FBDD9DA33B012 /* Pods_PagesDemo.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_PagesDemo.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
@@ -82,6 +84,7 @@
 				BDA1583A1AD7EEBD0011D55A /* AppDelegate.swift */,
 				BDA158411AD7EEBD0011D55A /* Images.xcassets */,
 				BDA158381AD7EEBD0011D55A /* Supporting Files */,
+				D21166C11D246AC500DF0F05 /* ViewController.swift */,
 			);
 			path = PagesDemo;
 			sourceTree = "<group>";
@@ -216,6 +219,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D21166C21D246AC500DF0F05 /* ViewController.swift in Sources */,
 				BDA1583B1AD7EEBD0011D55A /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -312,7 +316,7 @@
 					"$(inherited)",
 				);
 				INFOPLIST_FILE = PagesDemo/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 8.3;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "no.hyper.$(PRODUCT_NAME:rfc1034identifier)";
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -329,7 +333,7 @@
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				GCC_NO_COMMON_BLOCKS = YES;
 				INFOPLIST_FILE = PagesDemo/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 8.3;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "no.hyper.$(PRODUCT_NAME:rfc1034identifier)";
 				PRODUCT_NAME = "$(TARGET_NAME)";
