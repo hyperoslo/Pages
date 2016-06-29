@@ -1,14 +1,16 @@
 PODS:
-  - Pages (0.6.2)
+  - Pages (0.6.3)
 
 DEPENDENCIES:
   - Pages (from `../../`)
 
 EXTERNAL SOURCES:
   Pages:
-    :path: ../../
+    :path: "../../"
 
 SPEC CHECKSUMS:
-  Pages: 6c042132f8c63c34d242789b7763d4c64e9681a0
+  Pages: 71e80bc64040f1176297c327d080d80b7e74b38c
 
-COCOAPODS: 0.39.0
+PODFILE CHECKSUM: 8d1f75bf8ee92445dc8681a6f9d704e37800b3a8
+
+COCOAPODS: 1.0.0
