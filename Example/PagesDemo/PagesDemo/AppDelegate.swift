@@ -15,12 +15,12 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     pages.navigationItem.leftBarButtonItem = UIBarButtonItem(title: "Previous Page",
       style: .Plain,
       target: pages,
-      action: "previous")
+      action: #selector(PagesController.previous))
 
     pages.navigationItem.rightBarButtonItem = UIBarButtonItem(title: "Next Page",
       style: .Plain,
       target: pages,
-      action: "next")
+      action: #selector(PagesController.next))
 
     window = UIWindow(frame: UIScreen.mainScreen().bounds)
     window?.rootViewController = navigationController
@@ -52,7 +52,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
       viewController4
     ])
 
-    pages.enableSwipe = false
+    pages.enableSwipe = true
     pages.showBottomLine = true
 
     return pages
