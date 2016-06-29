@@ -2,4 +2,6 @@ use_frameworks!
 
 platform :ios, '8.0'
 
-pod 'Pages', path: '../../'
+target 'PagesDemo' do
+  pod 'Pages', path: '../../'
+end
