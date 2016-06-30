@@ -13,7 +13,13 @@ import UIKit
     static let bottomLineBottomMargin: CGFloat = 36.0
   }
 
-  public var startPage = 0
+  public var startPage = 0 {
+    didSet {
+      if currentIndex < startPage {
+        goTo(startPage)
+      }
+    }
+  }
   public var setNavigationTitle = true
 
   public var enableSwipe = true {
@@ -89,7 +95,7 @@ import UIKit
 extension PagesController {
 
   public func goTo(index: Int) {
-    if index >= 0 && index < pages.count {
+    if index >= startPage && index < pages.count {
       let direction: UIPageViewControllerNavigationDirection = (index > currentIndex) ? .Forward : .Reverse
       let viewController = pages[index]
       currentIndex = index
