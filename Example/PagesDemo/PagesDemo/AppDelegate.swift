@@ -1,5 +1,6 @@
 import UIKit
 import Pages
+import Imaginary
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
@@ -15,12 +16,12 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     pages.navigationItem.leftBarButtonItem = UIBarButtonItem(title: "Previous Page",
       style: .Plain,
       target: pages,
-      action: "previous")
+      action: #selector(PagesController.previous))
 
     pages.navigationItem.rightBarButtonItem = UIBarButtonItem(title: "Next Page",
       style: .Plain,
       target: pages,
-      action: "next")
+      action: #selector(PagesController.next))
 
     window = UIWindow(frame: UIScreen.mainScreen().bounds)
     window?.rootViewController = navigationController
@@ -30,29 +31,20 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
   func pagesControllerInCode() -> PagesController {
 
-    let viewController1 = UIViewController()
-    viewController1.view.backgroundColor = .blackColor()
-    viewController1.title = "Controller A"
+    var viewControllers: [UIViewController] = []
 
-    let viewController2 = UIViewController()
-    viewController2.view.backgroundColor = .blueColor()
-    viewController2.title = "Controller B"
+    for i in 0..<5 {
+      if let imageURL = NSURL(string: "https://unsplash.it/375/667/?image=\(i+10)") {
+        let viewController = ViewController()
+        viewController.imageView.setImage(imageURL)
 
-    let viewController3 = UIViewController()
-    viewController3.view.backgroundColor = .redColor()
-    viewController3.title = "Controller C"
+        viewControllers.append(viewController)
+      }
+    }
 
-    let viewController4 = UIViewController()
-    viewController4.view.backgroundColor = .yellowColor()
-    viewController4.title = "Controller D"
+    let pages = PagesController(viewControllers)
 
-    let pages = PagesController([viewController1,
-      viewController2,
-      viewController3,
-      viewController4
-    ])
-
-    pages.enableSwipe = false
+    pages.enableSwipe = true
     pages.showBottomLine = true
 
     return pages

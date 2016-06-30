@@ -1,14 +1,32 @@
 PODS:
-  - Pages (0.6.2)
+  - Cache (1.4.0):
+    - CryptoSwift
+  - CryptoSwift (0.5.1)
+  - Imaginary (0.1.0):
+    - Cache
+  - Pages (0.6.3)
 
 DEPENDENCIES:
+  - Imaginary (from `https://github.com/hyperoslo/Imaginary`)
   - Pages (from `../../`)
 
 EXTERNAL SOURCES:
+  Imaginary:
+    :git: https://github.com/hyperoslo/Imaginary
   Pages:
-    :path: ../../
+    :path: "../../"
+
+CHECKOUT OPTIONS:
+  Imaginary:
+    :commit: 4ab2007614aa2397a9ce82c69771f21df3d37cdc
+    :git: https://github.com/hyperoslo/Imaginary
 
 SPEC CHECKSUMS:
-  Pages: 6c042132f8c63c34d242789b7763d4c64e9681a0
+  Cache: 059cf0e10e6c3aec2c402eea19bd6b3aacb3fe9d
+  CryptoSwift: df42dda18baf6c76347a94e227dbcc0a341304bd
+  Imaginary: 62a9ce1e6d7831ede429c8221a183f03ec2a90bc
+  Pages: 71e80bc64040f1176297c327d080d80b7e74b38c
 
-COCOAPODS: 0.39.0
+PODFILE CHECKSUM: 651e7c1534e217a37653348ac0245c09a990e37f
+
+COCOAPODS: 1.0.0

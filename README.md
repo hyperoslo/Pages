@@ -21,7 +21,7 @@ let pages = PagesController([viewController1, viewController2])
 ```
 
 ## Demo
-![untitled](https://cloud.githubusercontent.com/assets/8013017/10394150/674b3046-6e95-11e5-8d35-eabd5e044002.gif)
+![untitled](Screenshots/demo.gif)
 
 ## Installation
 
