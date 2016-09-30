@@ -1,7 +1,7 @@
 extension Array {
   
-  func at(index: Int?) -> Element? {
-    if let index = index where index >= 0 && index < endIndex {
+  func at(_ index: Int?) -> Element? {
+    if let index = index , index >= 0 && index < endIndex {
       return self[index]
     } else {
       return nil
@@ -9,10 +9,10 @@ extension Array {
   }
 }
 
-func nextIndex(x: Int?) -> Int? {
-  return x?.successor()
+func nextIndex(_ x: Int?) -> Int? {
+  return ((x)! + 1)
 }
 
-func prevIndex(x: Int?) -> Int? {
-  return x?.predecessor()
+func prevIndex(_ x: Int?) -> Int? {
+  return ((x)! - 1)
 }

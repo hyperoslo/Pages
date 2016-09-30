@@ -1,20 +1,20 @@
 import UIKit
 
-public class ViewController: UIViewController {
+class ViewController: UIViewController {
 
   lazy var imageView = UIImageView()
 
-  public override func viewDidLoad() {
+  override func viewDidLoad() {
     super.viewDidLoad()
 
     view.addSubview(imageView)
 
-    imageView.contentMode = .ScaleAspectFill
+    imageView.contentMode = .scaleAspectFill
 
     imageView.translatesAutoresizingMaskIntoConstraints = false
-    imageView.topAnchor.constraintEqualToAnchor(view.topAnchor).active = true
-    imageView.leftAnchor.constraintEqualToAnchor(view.leftAnchor).active = true
-    imageView.rightAnchor.constraintEqualToAnchor(view.rightAnchor).active = true
-    imageView.bottomAnchor.constraintEqualToAnchor(view.bottomAnchor).active = true
+    imageView.topAnchor.constraint(equalTo: view.topAnchor).isActive = true
+    imageView.leftAnchor.constraint(equalTo: view.leftAnchor).isActive = true
+    imageView.rightAnchor.constraint(equalTo: view.rightAnchor).isActive = true
+    imageView.bottomAnchor.constraint(equalTo: view.bottomAnchor).isActive = true
   }
 }

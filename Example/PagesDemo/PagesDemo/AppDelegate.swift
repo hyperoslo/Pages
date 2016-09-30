@@ -7,23 +7,23 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
   var window: UIWindow?
 
-  func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
+  func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
     let pages = pagesControllerInCode()
     // let pages = pagesControllerInStoryboard()
 
     let navigationController = UINavigationController(rootViewController: pages)
 
     pages.navigationItem.leftBarButtonItem = UIBarButtonItem(title: "Previous Page",
-      style: .Plain,
+      style: .plain,
       target: pages,
-      action: #selector(PagesController.previous))
+      action: #selector(PagesController.moveBack))
 
     pages.navigationItem.rightBarButtonItem = UIBarButtonItem(title: "Next Page",
-      style: .Plain,
+      style: .plain,
       target: pages,
-      action: #selector(PagesController.next))
+      action: #selector(PagesController.moveForward))
 
-    window = UIWindow(frame: UIScreen.mainScreen().bounds)
+    window = UIWindow(frame: UIScreen.main.bounds)
     window?.rootViewController = navigationController
     window?.makeKeyAndVisible()
     return true
@@ -34,7 +34,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     var viewControllers: [UIViewController] = []
 
     for i in 0..<5 {
-      if let imageURL = NSURL(string: "https://unsplash.it/375/667/?image=\(i+10)") {
+      if let imageURL = URL(string: "https://unsplash.it/375/667/?image=\(i+10)") {
         let viewController = ViewController()
         viewController.imageView.setImage(imageURL)
 
