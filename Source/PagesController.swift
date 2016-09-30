@@ -113,11 +113,11 @@ extension PagesController {
     }
   }
 
-  public func next() {
+  public func moveForward() {
     goTo(currentIndex + 1)
   }
 
-  public func previous() {
+  public func moveBack() {
     goTo(currentIndex - 1)
   }
 
