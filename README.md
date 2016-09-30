@@ -3,6 +3,7 @@
 [![CI Status](http://img.shields.io/travis/hyperoslo/Pages.svg?style=flat)](https://travis-ci.org/hyperoslo/Pages)
 [![Version](https://img.shields.io/cocoapods/v/Pages.svg?style=flat)](http://cocoadocs.org/docsets/Pages)
 [![Carthage Compatible](https://img.shields.io/badge/Carthage-compatible-4BC51D.svg?style=flat)](https://github.com/Carthage/Carthage)
+![Swift](https://img.shields.io/badge/%20in-swift%203.0-orange.svg)
 [![License](https://img.shields.io/cocoapods/l/Pages.svg?style=flat)](http://cocoadocs.org/docsets/Pages)
 [![Platform](https://img.shields.io/cocoapods/p/Pages.svg?style=flat)](http://cocoadocs.org/docsets/Pages)
 
