@@ -16,7 +16,7 @@ import UIKit
   open var startPage = 0 {
     didSet {
       if currentIndex < startPage {
-        goTo(startPage)
+	goTo(index: startPage)
       }
     }
   }
@@ -77,7 +77,7 @@ import UIKit
     view.addSubview(bottomLineView)
     addConstraints()
     view.bringSubview(toFront: bottomLineView)
-    goTo(startPage)
+    goTo(index: startPage)
   }
 
   open override func viewDidAppear(_ animated: Bool) {
@@ -96,7 +96,7 @@ extension PagesController {
 
   public func goTo(index: Int) {
     if index >= startPage && index < pages.count {
-      let direction: UIPageViewControllerNavigationDirection = (index > currentIndex) ? .Forward : .Reverse
+      let direction: UIPageViewControllerNavigationDirection = (index > currentIndex) ? .forward : .reverse
       let viewController = pages[index]
       currentIndex = index
       setViewControllers([viewController],
@@ -114,11 +114,11 @@ extension PagesController {
   }
 
   open func moveForward() {
-    goTo(currentIndex + 1)
+    goTo(index: currentIndex + 1)
   }
 
   open func moveBack() {
-    goTo(currentIndex - 1)
+    goTo(index: currentIndex - 1)
   }
 
   open func add(_ viewControllers: [UIViewController]) {
