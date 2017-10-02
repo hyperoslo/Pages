@@ -1,65 +1,65 @@
 import UIKit
 
 @objc(HYPPagesControllerDelegate) public protocol PagesControllerDelegate {
-
-  func pageViewController(_ pageViewController: UIPageViewController, setViewController viewController: UIViewController, atPage page: Int)
+  func pageViewController(_ pageViewController: UIPageViewController,
+                          setViewController viewController: UIViewController,
+                          atPage page: Int)
 }
 
 @objc(HYPPagesController) open class PagesController: UIPageViewController {
-
-  struct Dimensions {
+  private struct Dimensions {
     static let bottomLineHeight: CGFloat = 1.0
     static let bottomLineSideMargin: CGFloat = 40.0
     static let bottomLineBottomMargin: CGFloat = 36.0
   }
 
-  open var startPage = 0
-  open var setNavigationTitle = true
+  public var startPage = 0
+  public var setNavigationTitle = true
 
-  open var enableSwipe = true {
+  public var enableSwipe = true {
     didSet {
       toggle()
     }
   }
 
-  open var showBottomLine = false {
+  public var showBottomLine = false {
     didSet {
       bottomLineView.isHidden = !showBottomLine
     }
   }
 
-  open var showPageControl = true
+  public var showPageControl = true
+  private lazy var pages = Array<UIViewController>()
 
-  lazy var pages = Array<UIViewController>()
-
-  open var pagesCount: Int {
+  public var pagesCount: Int {
     return pages.count
   }
 
-  open fileprivate(set) var currentIndex = 0
+  public private(set) var currentIndex = 0
+  public weak var pagesDelegate: PagesControllerDelegate?
 
-  open weak var pagesDelegate: PagesControllerDelegate?
-
-  open fileprivate(set) lazy var bottomLineView: UIView = {
+  public private(set) lazy var bottomLineView: UIView = {
     let view = UIView()
     view.translatesAutoresizingMaskIntoConstraints = false
     view.backgroundColor = UIColor.white
     view.alpha = 0.4
     view.isHidden = true
     return view
-    }()
+  }()
 
-  open fileprivate(set) var pageControl: UIPageControl?
+  public private(set) var pageControl: UIPageControl?
 
   public convenience init(_ pages: [UIViewController],
-    transitionStyle: UIPageViewControllerTransitionStyle = .scroll,
-    navigationOrientation: UIPageViewControllerNavigationOrientation = .horizontal,
-    options: [String : AnyObject]? = nil) {
-      self.init(transitionStyle: transitionStyle,
-        navigationOrientation: navigationOrientation,
-        options: options)
+                          transitionStyle: UIPageViewControllerTransitionStyle = .scroll,
+                          navigationOrientation: UIPageViewControllerNavigationOrientation = .horizontal,
+                          options: [String : AnyObject]? = nil) {
+    self.init(
+      transitionStyle: transitionStyle,
+      navigationOrientation: navigationOrientation,
+      options: options
+    )
 
-      add(pages)
+    add(pages)
   }
 
   open override func viewDidLoad() {
@@ -85,9 +85,9 @@ import UIKit
   }
 }
 
-// MARK: Public methods
-extension PagesController {
+// MARK: - Public methods
 
+extension PagesController {
   open func goTo(_ index: Int) {
     if index >= 0 && index < pages.count {
       let direction: UIPageViewControllerNavigationDirection = (index > currentIndex) ? .forward : .reverse
@@ -122,16 +122,17 @@ extension PagesController {
   }
 }
 
-// MARK: UIPageViewControllerDataSource
+// MARK: - UIPageViewControllerDataSource
 
 extension PagesController : UIPageViewControllerDataSource {
-
-  open func pageViewController(_ pageViewController: UIPageViewController, viewControllerBefore viewController: UIViewController) -> UIViewController? {
+  open func pageViewController(_ pageViewController: UIPageViewController,
+                               viewControllerBefore viewController: UIViewController) -> UIViewController? {
     let index = prevIndex(viewControllerIndex(viewController))
     return pages.at(index)
   }
 
-  open func pageViewController(_ pageViewController: UIPageViewController, viewControllerAfter viewController: UIViewController) -> UIViewController? {
+  open func pageViewController(_ pageViewController: UIPageViewController,
+                               viewControllerAfter viewController: UIViewController) -> UIViewController? {
     let index: Int? = nextIndex(viewControllerIndex(viewController))
     return pages.at(index)
   }
@@ -145,40 +146,47 @@ extension PagesController : UIPageViewControllerDataSource {
   }
 }
 
-// MARK: UIPageViewControllerDelegate
+// MARK: - UIPageViewControllerDelegate
 
 extension PagesController : UIPageViewControllerDelegate {
-
-  open func pageViewController(_ pageViewController: UIPageViewController, didFinishAnimating finished: Bool,
-    previousViewControllers: [UIViewController], transitionCompleted completed: Bool) {
-    if completed {
-      if let viewController = pageViewController.viewControllers?.last,
-        let index = viewControllerIndex(viewController) {
-          currentIndex = index
-
-          if setNavigationTitle {
-            title = viewController.title
-          }
-
-          if let pageControl = pageControl {
-            pageControl.currentPage = currentIndex
-          }
-
-          pagesDelegate?.pageViewController(self, setViewController: pages[currentIndex], atPage: currentIndex)
-      }
+  open func pageViewController(_ pageViewController: UIPageViewController,
+                               didFinishAnimating finished: Bool,
+                               previousViewControllers: [UIViewController],
+                               transitionCompleted completed: Bool) {
+    guard completed else {
+      return
     }
+
+    guard let viewController = pageViewController.viewControllers?.last else {
+      return
+    }
+
+    guard let index = viewControllerIndex(viewController) else {
+      return
+    }
+
+    currentIndex = index
+
+    if setNavigationTitle {
+      title = viewController.title
+    }
+
+    if let pageControl = pageControl {
+      pageControl.currentPage = currentIndex
+    }
+
+    pagesDelegate?.pageViewController(self, setViewController: pages[currentIndex], atPage: currentIndex)
   }
 }
 
-// MARK: Private methods
+// MARK: - Private methods
 
 extension PagesController {
-
   func viewControllerIndex(_ viewController: UIViewController) -> Int? {
     return pages.index(of: viewController)
   }
 
-  fileprivate func toggle() {
+  private func toggle() {
     for subview in view.subviews {
       if let subview = subview as? UIScrollView {
         subview.isScrollEnabled = enableSwipe
@@ -187,7 +195,7 @@ extension PagesController {
     }
   }
 
-  fileprivate func addViewController(_ viewController: UIViewController) {
+  private func addViewController(_ viewController: UIViewController) {
     pages.append(viewController)
 
     if pages.count == 1 {
@@ -205,7 +213,7 @@ extension PagesController {
     }
   }
 
-  fileprivate func addConstraints() {
+  private func addConstraints() {
     view.addConstraint(NSLayoutConstraint(item: bottomLineView, attribute: .bottom,
       relatedBy: .equal, toItem: view, attribute: .bottom,
       multiplier: 1, constant: -Dimensions.bottomLineBottomMargin))
@@ -227,10 +235,8 @@ extension PagesController {
 // MARK: Storyboard
 
 extension PagesController {
-  
-  public convenience init(_ storyboardIds: [String], storyboard: UIStoryboard = UIStoryboard.Main) {
+  public convenience init(_ storyboardIds: [String], storyboard: UIStoryboard = .Main) {
     let pages = storyboardIds.map(storyboard.instantiateViewController(withIdentifier:))
     self.init(pages)
   }
 }
-
