@@ -13,7 +13,7 @@ import UIKit
     static let bottomLineBottomMargin: CGFloat = 36.0
   }
 
-  public var startPage = 0
+  public let startPage = 0
   public var setNavigationTitle = true
 
   public var enableSwipe = true {
