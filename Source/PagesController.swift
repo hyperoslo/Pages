@@ -107,11 +107,11 @@ extension PagesController {
     }
   }
 
-  open func moveForward() {
+  @objc open func moveForward() {
     goTo(currentIndex + 1)
   }
 
-  open func moveBack() {
+  @objc open func moveBack() {
     goTo(currentIndex - 1)
   }
 

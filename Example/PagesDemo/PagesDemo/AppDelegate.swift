@@ -4,10 +4,10 @@ import Imaginary
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
-
   var window: UIWindow?
 
-  func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
+  func application(_ application: UIApplication,
+                   didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
     let pages = pagesControllerInCode()
     // let pages = pagesControllerInStoryboard()
 
@@ -26,17 +26,17 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     window = UIWindow(frame: UIScreen.main.bounds)
     window?.rootViewController = navigationController
     window?.makeKeyAndVisible()
+
     return true
   }
 
-  func pagesControllerInCode() -> PagesController {
-
+  private func pagesControllerInCode() -> PagesController {
     var viewControllers: [UIViewController] = []
 
     for i in 0..<5 {
       if let imageURL = URL(string: "https://unsplash.it/375/667/?image=\(i+10)") {
         let viewController = ViewController()
-        viewController.imageView.setImage(imageURL)
+        viewController.imageView.setImage(url: imageURL)
 
         viewControllers.append(viewController)
       }
@@ -50,7 +50,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     return pages
   }
 
-  func pagesControllerInStoryboard() -> PagesController {
+  private func pagesControllerInStoryboard() -> PagesController {
     let storyboardIds = ["One","Two"]
     return PagesController(storyboardIds)
   }
