@@ -83,24 +83,27 @@ import UIKit
       }
     }
   }
-}
 
-// MARK: - Public methods
+  // MARK: - Public methods
 
-extension PagesController {
   open func goTo(_ index: Int) {
     if index >= 0 && index < pages.count {
       let direction: UIPageViewControllerNavigationDirection = (index > currentIndex) ? .forward : .reverse
       let viewController = pages[index]
       currentIndex = index
-      setViewControllers([viewController],
+
+      setViewControllers(
+        [viewController],
         direction: direction,
         animated: true,
         completion: { [unowned self] finished in
-          self.pagesDelegate?.pageViewController(self,
+          self.pagesDelegate?.pageViewController(
+            self,
             setViewController: viewController,
-            atPage: self.currentIndex)
-        })
+            atPage: self.currentIndex
+          )
+      })
+
       if setNavigationTitle {
         title = viewController.title
       }
@@ -124,35 +127,35 @@ extension PagesController {
 
 // MARK: - UIPageViewControllerDataSource
 
-extension PagesController : UIPageViewControllerDataSource {
-  open func pageViewController(_ pageViewController: UIPageViewController,
-                               viewControllerBefore viewController: UIViewController) -> UIViewController? {
+extension PagesController: UIPageViewControllerDataSource {
+  @objc open func pageViewController(_ pageViewController: UIPageViewController,
+                                     viewControllerBefore viewController: UIViewController) -> UIViewController? {
     let index = prevIndex(viewControllerIndex(viewController))
     return pages.at(index)
   }
 
-  open func pageViewController(_ pageViewController: UIPageViewController,
-                               viewControllerAfter viewController: UIViewController) -> UIViewController? {
+  @objc open func pageViewController(_ pageViewController: UIPageViewController,
+                                     viewControllerAfter viewController: UIViewController) -> UIViewController? {
     let index: Int? = nextIndex(viewControllerIndex(viewController))
     return pages.at(index)
   }
 
-  open func presentationCount(for pageViewController: UIPageViewController) -> Int {
+  @objc open func presentationCount(for pageViewController: UIPageViewController) -> Int {
     return showPageControl ? pages.count : 0
   }
 
-  open func presentationIndex(for pageViewController: UIPageViewController) -> Int {
+  @objc open func presentationIndex(for pageViewController: UIPageViewController) -> Int {
     return showPageControl ? currentIndex : 0
   }
 }
 
 // MARK: - UIPageViewControllerDelegate
 
-extension PagesController : UIPageViewControllerDelegate {
-  open func pageViewController(_ pageViewController: UIPageViewController,
-                               didFinishAnimating finished: Bool,
-                               previousViewControllers: [UIViewController],
-                               transitionCompleted completed: Bool) {
+extension PagesController: UIPageViewControllerDelegate {
+  @objc open func pageViewController(_ pageViewController: UIPageViewController,
+                                     didFinishAnimating finished: Bool,
+                                     previousViewControllers: [UIViewController],
+                                     transitionCompleted completed: Bool) {
     guard completed else {
       return
     }
@@ -181,12 +184,12 @@ extension PagesController : UIPageViewControllerDelegate {
 
 // MARK: - Private methods
 
-extension PagesController {
+private extension PagesController {
   func viewControllerIndex(_ viewController: UIViewController) -> Int? {
     return pages.index(of: viewController)
   }
 
-  private func toggle() {
+  func toggle() {
     for subview in view.subviews {
       if let subview = subview as? UIScrollView {
         subview.isScrollEnabled = enableSwipe
@@ -195,7 +198,7 @@ extension PagesController {
     }
   }
 
-  private func addViewController(_ viewController: UIViewController) {
+  func addViewController(_ viewController: UIViewController) {
     pages.append(viewController)
 
     if pages.count == 1 {
@@ -213,7 +216,7 @@ extension PagesController {
     }
   }
 
-  private func addConstraints() {
+  func addConstraints() {
     view.addConstraint(NSLayoutConstraint(item: bottomLineView, attribute: .bottom,
       relatedBy: .equal, toItem: view, attribute: .bottom,
       multiplier: 1, constant: -Dimensions.bottomLineBottomMargin))
@@ -232,7 +235,7 @@ extension PagesController {
   }
 }
 
-// MARK: Storyboard
+// MARK: - Storyboard
 
 extension PagesController {
   public convenience init(_ storyboardIds: [String], storyboard: UIStoryboard = .Main) {
