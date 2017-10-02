@@ -2,8 +2,7 @@ use_frameworks!
 
 platform :ios, '9.0'
 
-target 'PagesDemo' do
-  pod 'Pages', path: '../../'
-  pod 'Imaginary', git: 'https://github.com/hyperoslo/Imaginary', branch: 'swift-3'
-  pod 'Cache', git: 'https://github.com/hyperoslo/Cache', branch: 'swift-3'
-end
+pod 'Pages', path: '../../'
+pod 'Imaginary', '~> 3.0'
+
+target 'PagesDemo'
