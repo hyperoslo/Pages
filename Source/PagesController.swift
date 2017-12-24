@@ -118,7 +118,7 @@ import UIKit
     goTo(currentIndex - 1)
   }
 
-  @objc open func add(_ viewControllers: [UIViewController]) {
+    @objc dynamic open func add(_ viewControllers: [UIViewController]) {
     for viewController in viewControllers {
       addViewController(viewController)
     }
