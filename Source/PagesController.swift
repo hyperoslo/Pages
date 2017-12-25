@@ -14,7 +14,7 @@ import UIKit
   }
 
   public let startPage = 0
-  public var setNavigationTitle = true
+  @objc public var setNavigationTitle = true
 
   public var enableSwipe = true {
     didSet {
@@ -35,7 +35,7 @@ import UIKit
     return pages.count
   }
 
-  public private(set) var currentIndex = 0
+  @objc public private(set) var currentIndex = 0
   public weak var pagesDelegate: PagesControllerDelegate?
 
   public private(set) lazy var bottomLineView: UIView = {
