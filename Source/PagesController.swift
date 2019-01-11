@@ -52,7 +52,7 @@ import UIKit
   public convenience init(_ pages: [UIViewController],
                           transitionStyle: UIPageViewController.TransitionStyle = .scroll,
                           navigationOrientation: UIPageViewController.NavigationOrientation = .horizontal,
-                          options: [UIPageViewController.OptionsKey : AnyObject]? = nil) {
+                          options: [String : AnyObject]? = nil) {
     self.init(
       transitionStyle: transitionStyle,
       navigationOrientation: navigationOrientation,
@@ -70,7 +70,7 @@ import UIKit
 
     view.addSubview(bottomLineView)
     addConstraints()
-    view.bringSubviewToFront(bottomLineView)
+    view.bringSubview(toFront: bottomLineView)
     goTo(startPage)
   }
 
