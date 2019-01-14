@@ -1,3 +1,5 @@
+⚠️ DEPRECATED, NO LONGER MAINTAINED
+
 ![Pages logo](https://raw.githubusercontent.com/hyperoslo/Pages/master/Images/pages_logo.png)
 
 [![CI Status](http://img.shields.io/travis/hyperoslo/Pages.svg?style=flat)](https://travis-ci.org/hyperoslo/Pages)
