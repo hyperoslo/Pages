@@ -2,14 +2,14 @@ PODS:
   - Cache (4.2.0)
   - Imaginary (3.0.3):
     - Cache (~> 4.0)
-  - Pages (2.0.6)
+  - Pages (3.0.0)
 
 DEPENDENCIES:
   - Imaginary (~> 3.0)
   - Pages (from `../../`)
 
 SPEC REPOS:
-  https://github.com/cocoapods/specs.git:
+  https://github.com/CocoaPods/Specs.git:
     - Cache
     - Imaginary
 
@@ -20,8 +20,8 @@ EXTERNAL SOURCES:
 SPEC CHECKSUMS:
   Cache: f28f8dd64b632155aabf9b3906b036a659048251
   Imaginary: 9b45836a5af881f452a86e0a1215772ae4712d00
-  Pages: 16426cf0771441235f88b2959ef2b73d21682ada
+  Pages: 9693f0faf3394787cda1453ead1de92eff80c47c
 
 PODFILE CHECKSUM: 704ea1ed834c6bde37b6188e9105c11f86c1ca77
 
-COCOAPODS: 1.5.3
+COCOAPODS: 1.9.1
