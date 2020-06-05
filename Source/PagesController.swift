@@ -49,18 +49,11 @@ import UIKit
 
   public private(set) var pageControl: UIPageControl?
 
-  public convenience init(_ pages: [UIViewController],
-                          transitionStyle: UIPageViewController.TransitionStyle = .scroll,
-                          navigationOrientation: UIPageViewController.NavigationOrientation = .horizontal,
-                          options: [UIPageViewController.OptionsKey : AnyObject]? = nil) {
-    self.init(
-      transitionStyle: transitionStyle,
-      navigationOrientation: navigationOrientation,
-      options: options
-    )
-
-    add(pages)
-  }
+    public convenience override init(transitionStyle style: UIPageViewController.TransitionStyle, navigationOrientation: UIPageViewController.NavigationOrientation, options: [UIPageViewController.OptionsKey : Any]? = nil) {
+        self.init(transitionStyle: style, navigationOrientation: navigationOrientation, options: options)
+        add(pages)
+    }
+    
 
   open override func viewDidLoad() {
     super.viewDidLoad()
@@ -186,7 +179,7 @@ extension PagesController: UIPageViewControllerDelegate {
 
 private extension PagesController {
   func viewControllerIndex(_ viewController: UIViewController) -> Int? {
-    return pages.index(of: viewController)
+    return pages.firstIndex(of: viewController)
   }
 
   func toggle() {
@@ -232,14 +225,5 @@ private extension PagesController {
     view.addConstraint(NSLayoutConstraint(item: bottomLineView, attribute: .height,
       relatedBy: .equal, toItem: nil, attribute: .notAnAttribute,
       multiplier: 1, constant: Dimensions.bottomLineHeight))
-  }
-}
-
-// MARK: - Storyboard
-
-extension PagesController {
-  public convenience init(_ storyboardIds: [String], storyboard: UIStoryboard = .Main) {
-    let pages = storyboardIds.map(storyboard.instantiateViewController(withIdentifier:))
-    self.init(pages)
   }
 }
