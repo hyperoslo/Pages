@@ -1,8 +1,7 @@
 use_frameworks!
 
-platform :ios, '9.0'
+platform :ios, '12.0'
 
 pod 'Pages', path: '../../'
-pod 'Imaginary', '~> 3.0'
 
 target 'PagesDemo'

@@ -1,6 +1,5 @@
 import UIKit
 import Pages
-import Imaginary
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
@@ -35,7 +34,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     for i in 0..<5 {
       if let imageURL = URL(string: "https://unsplash.it/375/667/?image=\(i+10)") {
-        let viewController = ViewController()
+        let viewController = ViewController()        
         viewController.imageView.setImage(url: imageURL)
 
         viewControllers.append(viewController)

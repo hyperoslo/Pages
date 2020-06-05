@@ -1,25 +1,16 @@
 PODS:
-  - Cache (4.0.1):
-    - SwiftHash (~> 2.0.0)
-  - Imaginary (3.0.0):
-    - Cache (~> 4.0)
-  - Pages (2.0.1)
-  - SwiftHash (2.0.0)
+  - Pages (3.0.0)
 
 DEPENDENCIES:
-  - Imaginary (~> 3.0)
   - Pages (from `../../`)
 
 EXTERNAL SOURCES:
   Pages:
-    :path: ../../
+    :path: "../../"
 
 SPEC CHECKSUMS:
-  Cache: 22f55fa3ab1b41e75799b479346b50b428fc5529
-  Imaginary: 2765d293d425cbed3b07fa11642554cbaebe913d
-  Pages: 56615e95dc00943349de5a83f550953f3446c0e7
-  SwiftHash: d2e09b13495447178cdfb8e46e54a5c46f15f5a9
+  Pages: 55d83ef306ada89ab11568851dbdaea100476044
 
-PODFILE CHECKSUM: 704ea1ed834c6bde37b6188e9105c11f86c1ca77
+PODFILE CHECKSUM: 9d72afd803a99fc21eba5f15146f51ccdd10e07e
 
-COCOAPODS: 1.3.1
+COCOAPODS: 1.9.3
